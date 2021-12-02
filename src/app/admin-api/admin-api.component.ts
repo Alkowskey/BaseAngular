@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { PersonInput } from "../../interfaces";
+import { PersonInput } from '../../interfaces';
+import { isValidPerson } from '../_validation/PersonValidation';
 
 @Component({
   selector: 'app-admin-api',
@@ -22,10 +23,12 @@ export class AdminAPIComponent implements OnInit {
   })
 
   onSubmit(): void{
+    const person: PersonInput = this.formGroup.value;
+    if(!isValidPerson(person)){
+      throw new Error("person data is not valid");
+    }
     console.log(this.formGroup.value);
   }
-
-  //name*/surname/phone*/address/message
 
   constructor(private route: ActivatedRoute) {
     
