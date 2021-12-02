@@ -1,0 +1,21 @@
+<p>admin-api works!</p>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName">
+  
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName">
+
+    <label for="phone">phone: </label>
+    <input id="phone" type="text" formControlName="phone">
+
+    <label for="address">address: </label>
+    <input id="address" type="text" formControlName="address">
+
+    <label for="message">message: </label>
+    <input id="message" type="text" formControlName="message">
+
+    <input type="submit" value="Send Request">
+  
+  </form>
