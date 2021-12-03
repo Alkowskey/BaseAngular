@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { PersonInput } from '../../interfaces';
 export const isValidFirstName = (): ValidatorFn => {
-    return (control: AbstractControl): { [key: string]: any } | null =>
+    return (control: AbstractControl): ValidationErrors | null =>
         control.value?.length > 0
             ? null : { strLen: control.value.length };
 }
