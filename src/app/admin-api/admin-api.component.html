@@ -1,21 +1,34 @@
 <p>admin-api works!</p>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
-    <label for="first-name">First Name: </label>
-    <input id="first-name" type="text" formControlName="firstName">
-  
-    <label for="last-name">Last Name: </label>
-    <input id="last-name" type="text" formControlName="lastName">
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="firstName">
+  <div
+    *ngIf="formGroup.get('firstName')?.invalid && (formGroup.get('firstName')?.dirty || formGroup.get('firstName')?.touched)">
+    <h2>Za krótkie</h2>
+  </div>
+  <br />
 
-    <label for="phone">phone: </label>
-    <input id="phone" type="text" formControlName="phone">
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName">
+  <br />
 
-    <label for="address">address: </label>
-    <input id="address" type="text" formControlName="address">
+  <label for="phone">phone: </label>
+  <input id="phone" type="text" formControlName="phone">
+  <div
+    *ngIf="formGroup.get('phone')?.invalid && formGroup.get('phone')?.errors?.['forbiddenPhone'] && (formGroup.get('phone')?.dirty || formGroup.get('phone')?.touched)">
+    <h2 class=red-text>Zły numer: {{formGroup.get('phone')?.errors?.['forbiddenPhone'].value}}</h2>
+  </div>
+  <br />
 
-    <label for="message">message: </label>
-    <input id="message" type="text" formControlName="message">
+  <label for="address">address: </label>
+  <input id="address" type="text" formControlName="address">
+  <br />
 
-    <input type="submit" value="Send Request">
-  
-  </form>
+  <label for="message">message: </label>
+  <input id="message" type="text" formControlName="message">
+  <br />
+
+  <input type="submit" value="Send Request">
+
+</form>

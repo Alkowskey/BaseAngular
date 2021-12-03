@@ -1,12 +1,16 @@
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { PersonInput } from '../../interfaces';
-export const isValidFirstName = (firstName: string): boolean => firstName?.length > 0;
-
-export const isValidPhone = (phone: string): boolean => /^\+?[0-9]{3}-?[0-9]{6,12}$/.test(phone);
-
-export const isValidPerson = (person: PersonInput) => {
-    const { firstName, phone } = person;
-    if (!isValidFirstName(firstName)) return false;
-    if (!isValidPhone(phone)) return false;
-
-    return true;
+export const isValidFirstName = (): ValidatorFn => {
+    return (control: AbstractControl): { [key: string]: any } | null =>
+        control.value?.length > 0
+            ? null : { strLen: control.value.length };
 }
+
+export const isValidPhone = (): ValidatorFn => {
+    return (control: AbstractControl): ValidationErrors | null => {
+        const isValid = /^\+?[0-9]{3}-?[0-9]{6,12}$/.test(control.value)
+
+        return !isValid ? { forbiddenPhone: { value: control.value } } : null
+    }
+
+};
