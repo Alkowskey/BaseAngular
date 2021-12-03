@@ -15,7 +15,7 @@ export class AdminAPIComponent implements OnInit {
     { id: 2, firstName: "Przemek", lastName: "Asdd", phone: "123123123", address: "Krk", message: "" },
   ]
   formGroup = new FormGroup({
-    'firstName': new FormControl('', [Validators.required, isValidFirstName()]),
+    firstName: new FormControl('', [Validators.required, isValidFirstName()]),
     lastName: new FormControl(''),
     phone: new FormControl('', [Validators.required, isValidPhone()]),
     address: new FormControl(''),
