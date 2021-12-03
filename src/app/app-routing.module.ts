@@ -7,7 +7,6 @@ import { Auth, PermissionGuard } from "./_utils"
 
 //redirect
 const routes: Routes = [
-<<<<<<< HEAD
   {
     path: 'admin', children: [
       { path: "", component: AdminAPIComponent, pathMatch: "full" },
@@ -15,12 +14,6 @@ const routes: Routes = [
     ],
   },
   { path: '**', component: HomeComponent },
-=======
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/:id', component: AdminComponent },
-  { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'prefix' },
->>>>>>> 8e8bdf7 (Changed routing to use redirect instead of wildcards)
 ];
 
 @NgModule({
