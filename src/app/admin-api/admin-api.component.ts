@@ -11,8 +11,8 @@ import { isValidPerson } from '../_validation/PersonValidation';
 })
 export class AdminAPIComponent implements OnInit {
   data: Array<PersonInput> = [
-    {id: 1, firstName: "Alek", lastName: "Kulinski", phone: "123123123", address:"Krk", message: ""},
-    {id: 2, firstName: "Przemek", lastName: "Asdd", phone: "123123123", address:"Krk", message: ""},
+    { id: 1, firstName: "Alek", lastName: "Kulinski", phone: "123123123", address: "Krk", message: "" },
+    { id: 2, firstName: "Przemek", lastName: "Asdd", phone: "123123123", address: "Krk", message: "" },
   ]
   formGroup = new FormGroup({
     firstName: new FormControl(''),
@@ -21,17 +21,21 @@ export class AdminAPIComponent implements OnInit {
     address: new FormControl(''),
     message: new FormControl(''),
   })
+  //Zmień validatory
+  //Dodaj guarda
 
-  onSubmit(): void{
+  onSubmit(): void {
     const person: PersonInput = this.formGroup.value;
-    if(!isValidPerson(person)){
+    //Validate via form
+    //FormGroup.valid
+    if (!isValidPerson(person)) {
       throw new Error("person data is not valid");
     }
     console.log(this.formGroup.value);
   }
 
   constructor(private route: ActivatedRoute) {
-    
+
   }
 
   setForm(person: PersonInput): void {
@@ -43,7 +47,7 @@ export class AdminAPIComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id");
     const person = this.data.find(p => p.id === Number(id));
-    if(person)
+    if (person)
       this.setForm(person);
   }
 

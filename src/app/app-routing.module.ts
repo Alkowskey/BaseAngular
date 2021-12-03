@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 
+//redirect
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'admin/:id', component: AdminComponent },
-  { path: '**', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'prefix' },
 ];
 
 @NgModule({
