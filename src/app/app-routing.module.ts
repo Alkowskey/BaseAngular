@@ -3,15 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import Auth from './_utils/Auth';
+import { AdminAPIComponent } from './admin-api/admin-api.component';
 
 const routes: Routes = [
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/:id', component: AdminComponent },
+  { path: 'admin', component: AdminAPIComponent, canActivate: [Auth], },
+  { path: 'admin/:id', component: AdminAPIComponent, canActivate: [Auth] },
   { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [Auth]
 })
 export class AppRoutingModule { }

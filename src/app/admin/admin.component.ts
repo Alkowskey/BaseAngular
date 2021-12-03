@@ -12,10 +12,7 @@ export class AdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if(!Auth.isAuthorized()){
-      throw new Error("User is not authorized");
-    }
-    
+
   }
 
 }
