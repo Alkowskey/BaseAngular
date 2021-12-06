@@ -6,8 +6,12 @@ import { AdminAPIComponent } from './admin-api/admin-api.component';
 import { Auth, PermissionGuard } from "./_utils"
 
 const routes: Routes = [
-  { path: 'admin', component: AdminAPIComponent, canActivate: [Auth], },
-  { path: 'admin/:id', component: AdminAPIComponent, canActivate: [Auth, PermissionGuard] },
+  {
+    path: 'admin', children: [
+      { path: "", component: AdminAPIComponent, pathMatch: "full" },
+      { path: ':id', component: AdminAPIComponent, canActivate: [PermissionGuard] },
+    ],
+  },
   { path: '**', component: HomeComponent },
 ];
 
