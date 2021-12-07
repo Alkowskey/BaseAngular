@@ -12,6 +12,7 @@ const routes: Routes = [
       { path: "", component: AdminAPIComponent, pathMatch: "full" },
       { path: ':id', component: AdminAPIComponent, canActivate: [PermissionGuard] },
     ],
+    canActivate: [Auth]
   },
   { path: '**', component: HomeComponent },
 ];
