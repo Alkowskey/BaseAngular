@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PersonInput } from '../../interfaces';
-import { isValidPerson } from '../_validation/PersonValidation';
+import { PersonValidation } from '../_validation/PersonValidation';
 
 @Component({
   selector: 'app-admin-api',
@@ -15,9 +15,9 @@ export class AdminAPIComponent implements OnInit {
     { id: 2, firstName: "Przemek", lastName: "Asdd", phone: "123123123", address: "Krk", message: "" },
   ]
   formGroup = new FormGroup({
-    firstName: new FormControl(''),
+    firstName: new FormControl('', [Validators.required, Validators.minLength(2)], [PersonValidation.isValidAsync]),
     lastName: new FormControl(''),
-    phone: new FormControl(''),
+    phone: new FormControl('', [Validators.required, PersonValidation.isValidPhone]), //I know that there is Validators.pattern but i wanted to write it myself this time
     address: new FormControl(''),
     message: new FormControl(''),
   })
@@ -25,13 +25,11 @@ export class AdminAPIComponent implements OnInit {
   //Dodaj guarda
 
   onSubmit(): void {
-    const person: PersonInput = this.formGroup.value;
-    //Validate via form
-    //FormGroup.valid
-    if (!isValidPerson(person)) {
-      throw new Error("person data is not valid");
+    if (!this.formGroup.valid) {
+      throw new Error("Form is not valid");
     }
-    console.log(this.formGroup.value);
+    const person: PersonInput = this.formGroup.value;
+    console.log(person);
   }
 
   constructor(private route: ActivatedRoute) {
