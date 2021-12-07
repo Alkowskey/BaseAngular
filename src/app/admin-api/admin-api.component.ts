@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PersonInput } from '../../interfaces';
-<<<<<<< HEAD
 import { PersonValidation } from '../_validation/PersonValidation';
-=======
-import { isValidFirstName, isValidPhone } from '../_validation/PersonValidation';
->>>>>>> created validation on forms using ValidatorFn
 
 @Component({
   selector: 'app-admin-api',
@@ -19,15 +15,9 @@ export class AdminAPIComponent implements OnInit {
     { id: 2, firstName: "Przemek", lastName: "Asdd", phone: "123123123", address: "Krk", message: "" },
   ]
   formGroup = new FormGroup({
-<<<<<<< HEAD
     firstName: new FormControl('', [Validators.required, Validators.minLength(2)], [PersonValidation.isValidAsync]),
     lastName: new FormControl(''),
     phone: new FormControl('', [Validators.required, PersonValidation.isValidPhone]), //I know that there is Validators.pattern but i wanted to write it myself this time
-=======
-    'firstName': new FormControl('', [Validators.required, isValidFirstName()]),
-    lastName: new FormControl(''),
-    phone: new FormControl('', [Validators.required, isValidPhone()]),
->>>>>>> created validation on forms using ValidatorFn
     address: new FormControl(''),
     message: new FormControl(''),
   })
