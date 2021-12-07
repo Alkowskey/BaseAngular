@@ -2,18 +2,24 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminAPIComponent } from './admin-api/admin-api.component';
+import { Auth, PermissionGuard } from "./_utils"
 
 //redirect
 const routes: Routes = [
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/:id', component: AdminComponent },
-  { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'prefix' },
+  {
+    path: 'admin', children: [
+      { path: "", component: AdminAPIComponent, pathMatch: "full" },
+      { path: ':id', component: AdminAPIComponent, canActivate: [PermissionGuard] },
+    ],
+    canActivate: [Auth]
+  },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [Auth, PermissionGuard]
 })
 export class AppRoutingModule { }
