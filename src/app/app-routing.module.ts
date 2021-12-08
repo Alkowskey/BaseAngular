@@ -8,10 +8,12 @@ import { Auth, PermissionGuard } from "./_utils"
 //redirect
 const routes: Routes = [
   {
-    path: 'admin', children: [
-      { path: "", component: AdminAPIComponent, pathMatch: "full" },
-      { path: ':id', component: AdminAPIComponent, canActivate: [PermissionGuard] },
-    ],
+    // path: 'admin', children: [
+    //   { path: "", component: AdminAPIComponent, pathMatch: "full" },
+    //   { path: ':id', component: AdminAPIComponent, canActivate: [PermissionGuard] },
+    // ],
+    path: 'admin',
+    loadChildren: () => import('./modules/admin-api/admin-api.module').then(m => m.AdminAPIModule),
     canActivate: [Auth]
   },
   { path: '**', component: HomeComponent },
