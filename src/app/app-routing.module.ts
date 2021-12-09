@@ -8,8 +8,9 @@ import { Auth } from "./_utils"
 const routes: Routes = [
   {
     path: 'admin',
-    loadChildren: () => import('./modules/admin-api/admin-api.module').then(m => m.AdminAPIModule),
     canActivateChild: [Auth],
+    canLoad: [Auth],
+    loadChildren: () => import('./modules/admin-api/admin-api.module').then(m => m.AdminAPIModule),
   },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '/' },
