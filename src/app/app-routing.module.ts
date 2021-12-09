@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./modules/admin-api/admin-api.module').then(m => m.AdminAPIModule),
-    canActivate: [Auth]
+    canActivateChild: [Auth],
   },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '/' },

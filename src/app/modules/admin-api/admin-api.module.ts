@@ -4,18 +4,12 @@ import { AdminAPIComponent } from '../../admin-api/admin-api.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import PermissionGuard from '../../_utils/PermissionGuard';
+import Auth from '../../_utils/Auth';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AdminAPIComponent
-  },
-  {
-    path: ':id',
-    component: AdminAPIComponent,
-    canActivate: [PermissionGuard]
-  }
+  { path: "", component: AdminAPIComponent, pathMatch: "full" },
+  { path: ':id', component: AdminAPIComponent, canActivate: [PermissionGuard] },
 ];
 
 @NgModule({
