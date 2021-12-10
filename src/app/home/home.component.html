@@ -1,1 +1,18 @@
 <p>{{ title }} home works!</p>
+
+<h1 *ngIf="weatherData?.product">
+    {{weatherData.product}}
+</h1>
+
+<h2 *ngIf="weatherData?.init">{{weatherData.init}} </h2>
+
+<table>
+    <td>Temp:</td>
+    <td>Cloudcover</td>
+    <td>direction : speed</td>
+    <tr *ngFor="let item of weatherData?.dataseries">
+        <td>{{ item?.temp2m }}</td>
+        <td>{{ item?.cloudcover }}</td>
+        <td>{{ item?.wind10m?.direction }} : {{item?.wind10m?.speed}}</td>
+    </tr>
+</table>
