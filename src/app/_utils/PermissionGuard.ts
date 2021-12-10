@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRoute, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRoute, Router, ActivatedRouteSnapshot, CanActivateChild } from '@angular/router';
 
 @Injectable({
     providedIn: "root",
