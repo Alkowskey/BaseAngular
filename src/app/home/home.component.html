@@ -1,18 +1,38 @@
 <p>{{ title }} home works!</p>
 
-<h1 *ngIf="weatherData?.product">
-    {{weatherData.product}}
-</h1>
+<div class="container mat-elevation-z8">
+    <div class="loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
 
-<h2 *ngIf="weatherData?.init">{{weatherData.init}} </h2>
+    <div class="table-container">
+        <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
 
-<table>
-    <td>Temp:</td>
-    <td>Cloudcover</td>
-    <td>direction : speed</td>
-    <tr *ngFor="let item of weatherData?.dataseries">
-        <td>{{ item?.temp2m }}</td>
-        <td>{{ item?.cloudcover }}</td>
-        <td>{{ item?.wind10m?.direction }} : {{item?.wind10m?.speed}}</td>
-    </tr>
-</table>
+            <ng-container matColumnDef="temp2m">
+                <div *matHeaderCellDef>temp</div>
+                <div *matCellDef="let el">{{el.temp2m}}</div>
+            </ng-container>
+
+            <ng-container matColumnDef="cloudcover">
+                <div *matHeaderCellDef>cloudcover</div>
+                <div class="description-cell" *matCellDef="let el">{{el.cloudcover}}</div>
+            </ng-container>
+
+            <ng-container matColumnDef="direction">
+                <div *matHeaderCellDef>direction</div>
+                <div class="duration-cell" *matCellDef="let el">{{el.wind10m.direction}}</div>
+            </ng-container>
+
+            <ng-container matColumnDef="speed">
+                <div *matHeaderCellDef>speed</div>
+                <div class="duration-cell" *matCellDef="let el">{{el.wind10m.speed}}</div>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+        </mat-table>
+    </div>
+</div>

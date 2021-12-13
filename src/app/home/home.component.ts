@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Weather } from 'src/interfaces';
+import { Data, Weather } from 'src/interfaces';
 import { WeatherAPIService } from '../services/weather-api.service';
 
 @Component({
@@ -9,19 +9,21 @@ import { WeatherAPIService } from '../services/weather-api.service';
 })
 export class HomeComponent implements OnInit {
   title = 'loginApp Home';
-  weatherData: Weather;
+  public displayedColumns: string[] = ['temp2m', 'cloudcover', 'direction', 'speed'];
+  public dataSource: Data[] = [];
+  public isLoadingResults = true;
   constructor(private weather: WeatherAPIService) {
-    this.weatherData = { product: "temp", init: "loading", dataseries: [] };
   }
 
   ngOnInit(): void {
-    console.log(this.weatherData?.dataseries?.length)
-    this.weather.getWeather().subscribe((data: any) => this.weatherData = {
-      ...data
+    this.weather.getWeather().subscribe((data: Weather) => {
+      if (data?.dataseries == null)
+        this.dataSource = [];
+      else {
+        this.isLoadingResults = false;
+        this.dataSource = data?.dataseries
+      }
     })
-    setTimeout(() => {
-      console.log(this.weatherData)
-    }, 3000);
 
   }
 
