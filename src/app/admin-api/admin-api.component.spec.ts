@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from "@angular/router/testing";
 import { AdminAPIComponent } from './admin-api.component';
 
 describe('AdminAPIComponent', () => {
@@ -8,9 +8,12 @@ describe('AdminAPIComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminAPIComponent ]
+      declarations: [AdminAPIComponent],
+      imports: [
+        RouterTestingModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
