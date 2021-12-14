@@ -21,8 +21,6 @@ export class AdminAPIComponent implements OnInit {
     address: new FormControl(''),
     message: new FormControl(''),
   })
-  //Zmień validatory
-  //Dodaj guarda
 
   onSubmit(): void {
     if (!this.formGroup.valid) {
