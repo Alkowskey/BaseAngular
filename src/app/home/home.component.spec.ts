@@ -27,7 +27,7 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('Should have table headers', () => {
+  it('Should have table', () => {
     table = fixture.nativeElement.querySelector("mat-table");
     expect(table).toBeDefined();
   })
