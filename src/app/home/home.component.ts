@@ -16,6 +16,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit (): void {
+    this.loadData()
+  }
+
+  loadData (): void {
     this.weather.getWeather().subscribe((data: Weather) => {
       if (data?.dataseries == null) { this.dataSource = [] } else {
         this.isLoadingResults = false
