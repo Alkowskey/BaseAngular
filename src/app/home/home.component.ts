@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadData (): void {
+    console.log(this.weather.groupWind())
     this.weather.getWeather().subscribe((data: Weather) => {
       if (data?.dataseries == null) { this.dataSource = [] } else {
         this.isLoadingResults = false
