@@ -26,20 +26,21 @@ export class WeatherAPIService {
     return this.http.get<Weather>(API_URL)
   }
 
-  private countByDirectionVal (arr: Array<Data> | undefined, val: string): number {
-    let i = 0
-    arr?.map((v) => v.wind10m.direction === val ? i++ : i)
-    return i
+  private countByDirection (arr: Array<Data> | undefined, val: string): number {
+    if (!arr) return 0
+    return arr.reduce((prev: number, next) => {
+      return next.wind10m.direction === val ? ++prev : prev
+    }, 0)
   }
 
   groupWind (): Map<string, number> {
     const result = new Map<string, number>()
     this.getWeather().pipe(map((v: Weather) => {
-      v.dataseries?.map((el) => // dont know how to use reduce
+      v.dataseries?.forEach((el) =>
         result.set(el.wind10m.direction, (result.get(el.wind10m.direction) || 0) + el.wind10m.speed)
       )
       result.forEach((value: number, key: string) => {
-        result.set(key, value / this.countByDirectionVal(v.dataseries, key))
+        result.set(key, value / this.countByDirection(v.dataseries, key))
       })
     })).subscribe()
     return result
