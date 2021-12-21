@@ -13,7 +13,7 @@ export class WeatherAPIService {
   private cache$!: Observable<Weather>;
   constructor (private http: HttpClient) { }
 
-  getWeather () {
+  getWeather (): Observable<Weather> {
     if (this.cache$) { return this.cache$ }
 
     this.cache$ = this.requestWeather().pipe(
@@ -22,17 +22,17 @@ export class WeatherAPIService {
     return this.cache$
   }
 
-  private requestWeather () {
+  private requestWeather (): Observable<Weather> {
     return this.http.get<Weather>(API_URL)
   }
 
-  private countByDirectionVal (arr: Array<Data> | undefined, val: string) {
+  private countByDirectionVal (arr: Array<Data> | undefined, val: string): number {
     let i = 0
     arr?.map((v) => v.wind10m.direction === val ? i++ : i)
     return i
   }
 
-  groupWind () {
+  groupWind (): Map<string, number> {
     const result = new Map<string, number>()
     this.getWeather().forEach(v => {
       v.dataseries?.map((el) =>
