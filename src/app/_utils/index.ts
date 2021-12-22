@@ -1,4 +1,4 @@
-import Auth from "./Auth"
-import PermissionGuard from "./PermissionGuard";
+import Auth from './Auth'
+import PermissionGuard from './PermissionGuard'
 
-export { Auth, PermissionGuard };
+export { Auth, PermissionGuard }
