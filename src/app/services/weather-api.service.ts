@@ -33,16 +33,15 @@ export class WeatherAPIService {
     }, 0)
   }
 
-  groupWind (): Map<string, number> {
-    const result = new Map<string, number>()
-    this.getWeather().pipe(map((v: Weather) => {
-      v.dataseries?.forEach((el) =>
-        result.set(el.wind10m.direction, (result.get(el.wind10m.direction) || 0) + el.wind10m.speed)
-      )
-      result.forEach((value: number, key: string) => {
+  groupWind (): Observable<Map<string, number>> {
+    return this.getWeather().pipe(map((v: Weather):Map<string, number> => {
+      const result = v.dataseries?.reduce((prev, el) =>
+        prev.set(el.wind10m.direction, (prev.get(el.wind10m.direction) || 0) + el.wind10m.speed),
+      new Map<string, number>())
+      result?.forEach((value: number, key: string) => {
         result.set(key, value / this.countByDirection(v.dataseries, key))
       })
-    })).subscribe()
-    return result
+      return result || new Map<string, number>()
+    }))
   }
 }
