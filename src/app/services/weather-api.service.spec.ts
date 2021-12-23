@@ -6,20 +6,6 @@ import { HttpClientModule } from '@angular/common/http'
 
 describe('WeatherAPIService', () => {
   let service: WeatherAPIService
-  // const testData: Data = {
-  //   timepoint: 1,
-  //   cloudcover: 1,
-  //   seeing: 1,
-  //   transparency: 1,
-  //   lifted_index: 1,
-  //   rh2m: 1,
-  //   wind10m: {
-  //     direction: 'N',
-  //     speed: 12
-  //   },
-  //   temp2m: 1,
-  //   prec_type: '1'
-  // }
 
   beforeEach(() => {
     TestBed.configureTestingModule({ imports: [HttpClientModule] })
