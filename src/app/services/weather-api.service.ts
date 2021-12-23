@@ -26,7 +26,7 @@ export class WeatherAPIService {
     return this.http.get<Weather>(API_URL)
   }
 
-  public countByDirection (arr: Array<Data> | undefined, val: string): number {
+  public countByDirection (arr: Pick<Data, 'wind10m'>[] | undefined, val: string): number {
     if (!arr) return 0
     return arr.reduce((prev: number, next) => {
       return next.wind10m.direction === val ? ++prev : prev
