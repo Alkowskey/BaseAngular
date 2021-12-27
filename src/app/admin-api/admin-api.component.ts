@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, ElementRef, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { PersonInput } from '../../interfaces'
 import { PersonValidation } from '../_validation/PersonValidation'
+import { FocusOnElementService } from '../services/focus-on-element.service'
 
 @Component({
   selector: 'app-admin-api',
@@ -15,6 +16,8 @@ export class AdminAPIComponent implements OnInit {
     { id: 2, firstName: 'Przemek', lastName: 'Asdd', phone: '123123123', address: 'Krk', message: '' }
   ]
 
+  selectedName: string = 'Empty';
+
   formGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.minLength(2)], [PersonValidation.isValidAsync]),
     lastName: new FormControl(''),
@@ -22,8 +25,6 @@ export class AdminAPIComponent implements OnInit {
     address: new FormControl(''),
     message: new FormControl('')
   })
-  // Zmień validatory
-  // Dodaj guarda
 
   onSubmit (): void {
     if (!this.formGroup.valid) {
@@ -33,7 +34,7 @@ export class AdminAPIComponent implements OnInit {
     console.log(person)
   }
 
-  constructor (private route: ActivatedRoute) {
+  constructor (private route: ActivatedRoute, private focusWithin: FocusOnElementService, private _elementRef: ElementRef) {
 
   }
 
@@ -46,6 +47,8 @@ export class AdminAPIComponent implements OnInit {
   ngOnInit (): void {
     const id = this.route.snapshot.paramMap.get('id')
     const person = this.data.find(p => p.id === Number(id))
+    const elementToSelect = this._elementRef.nativeElement.querySelector('#form')
+    this.focusWithin.finals(elementToSelect).subscribe(result => { this.selectedName = result?.id ? result?.id : 'empty' })
     if (person) { this.setForm(person) }
   }
 }
