@@ -1,25 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { AdminAPIComponent } from './admin-api.component';
+import { AdminAPIComponent } from './admin-api.component'
+
+import { RouterTestingModule } from '@angular/router/testing'
 
 describe('AdminAPIComponent', () => {
-  let component: AdminAPIComponent;
-  let fixture: ComponentFixture<AdminAPIComponent>;
+  let component: AdminAPIComponent
+  let fixture: ComponentFixture<AdminAPIComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminAPIComponent ]
+      imports: [
+        RouterTestingModule
+      ],
+      declarations: [AdminAPIComponent]
     })
-    .compileComponents();
-  });
+      .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminAPIComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(AdminAPIComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})
