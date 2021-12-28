@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Data, Weather } from 'src/interfaces'
 import { WeatherAPIService } from '../services/weather-api.service'
 import { PageVisibilityService } from '../services/page-visibility.service'
+import { NotificationService } from '../services/notification.service'
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   public displayedColumns: string[] = ['temp2m', 'cloudcover', 'direction', 'speed'];
   public dataSource: Data[] = [];
   public isLoadingResults = true;
-  constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService) {
+  constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService, readonly notificationService: NotificationService) {
   }
 
   ngOnInit (): void {
@@ -29,5 +30,9 @@ export class HomeComponent implements OnInit {
         this.dataSource = data?.dataseries
       }
     })
+  }
+
+  show () {
+    this.notificationService.show('Test toast').subscribe()
   }
 }
