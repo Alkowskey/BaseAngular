@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common'
 import { Inject, Injectable } from '@angular/core'
-import { debounceTime, distinctUntilChanged, fromEvent, map, merge, of } from 'rxjs'
+import { debounceTime, distinctUntilChanged, fromEvent, map, merge, of, Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class FocusOnElementService {
   ) {
   }
 
-  finals (el: HTMLElement) {
+  trackSelect (el: HTMLElement): Observable<Element|null> {
     return merge(
       fromEvent(document, 'focusin'),
       fromEvent(document, 'focusout'),

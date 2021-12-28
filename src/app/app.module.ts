@@ -7,13 +7,8 @@ import { HomeComponent } from './home/home.component'
 import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-// Move it to seperate module
-import { MatTableModule } from '@angular/material/table'
-import { MatPaginatorModule } from '@angular/material/paginator'
-import { MatInputModule } from '@angular/material/input'
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { MatSortModule } from '@angular/material/sort'
 import { FocusOnElementService } from './services/focus-on-element.service'
+import { MaterialModule } from './modules/material/material.module'
 
 @NgModule({
   declarations: [
@@ -25,11 +20,7 @@ import { FocusOnElementService } from './services/focus-on-element.service'
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule
+    MaterialModule
   ],
   providers: [FocusOnElementService],
   bootstrap: [AppComponent]

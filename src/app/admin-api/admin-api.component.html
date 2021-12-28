@@ -1,6 +1,5 @@
-<h2>Wybrane: {{selectedName}}</h2>
-<form id="form" class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-
+<form appTrackSelect displayId="#inputId" id="form" class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  Wybrane:<p id="inputId"></p>
   <label for="first-name">First Name: </label>
   <input id="first-name" type="text" formControlName="firstName">
   <div
