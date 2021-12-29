@@ -1,9 +1,10 @@
 
-<div class="notifications">
-    <app-notification *ngFor="let item of notificationService | async" [observer]="item.observer">
-      {{item.content}}
-    </app-notification>
-</div>
+<app-popup>
+    <div class="notifications">
+        <app-notification *ngFor="let item of notificationService | async" [observer]="item.observer">
+          {{item.content}}
+        </app-notification>
+    </div>
 <div class="container">
     <div class="loading-shade" *ngIf="isLoadingResults">
         <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -44,3 +45,8 @@
         Show toast
     </button>
 </div>
+    <button (click)="modal$$.next('asdasd')">
+        Open modal
+      </button>
+</div>
+</app-popup>

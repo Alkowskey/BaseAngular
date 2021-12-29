@@ -1,0 +1,10 @@
+<ng-content></ng-content>
+<div *ngIf="modal$$ | async as modal" class="overlay">
+  <div class="modal" (appPopupClose)="modal$$.next(null)">
+    {{modal}}
+
+    <button (click)="modal$$.next(null)">
+      Close
+    </button>
+  </div>
+</div>

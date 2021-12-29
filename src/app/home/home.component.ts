@@ -3,6 +3,7 @@ import { Data, Weather } from 'src/interfaces'
 import { WeatherAPIService } from '../services/weather-api.service'
 import { PageVisibilityService } from '../services/page-visibility.service'
 import { NotificationService } from '../services/notification.service'
+import { ModalService } from '../services/modal.service'
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   public displayedColumns: string[] = ['temp2m', 'cloudcover', 'direction', 'speed'];
   public dataSource: Data[] = [];
   public isLoadingResults = true;
-  constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService, readonly notificationService: NotificationService) {
+  constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService, readonly notificationService: NotificationService, readonly modal$$: ModalService) {
   }
 
   ngOnInit (): void {
