@@ -3,26 +3,28 @@ import { Directive, Inject, Output, ElementRef } from '@angular/core'
 import { filter, fromEvent, merge, Observable, switchMapTo, take } from 'rxjs'
 
 @Directive({
-  selector: '[appPopupClose]'
+  selector: '[popupClose]'
 })
 export class PopupCloseDirective {
   @Output()
-  modalClose: Observable<unknown>;
+  popupClose: Observable<unknown>;
 
   constructor (
     @Inject(ElementRef) { nativeElement }: ElementRef<HTMLElement>,
     @Inject(DOCUMENT) documentRef: Document
   ) {
-    console.log('TEST')
     const esc$: Observable<unknown> = fromEvent<KeyboardEvent>(
       documentRef,
       'keydown'
-    ).pipe(filter(({ key }) => key === 'Escape'))
+    ).pipe(filter(({ key }) => {
+      return key === 'Escape'
+    }))
 
     const clickOutside$ = fromEvent<MouseEvent>(documentRef, 'mousedown').pipe(
       filter(
-        ({ target }) =>
-          target instanceof Element && !nativeElement.contains(target)
+        ({ target }) => {
+          return target instanceof Element && !nativeElement.contains(target)
+        }
       ),
       switchMapTo(
         fromEvent<MouseEvent>(documentRef, 'mouseup').pipe(
@@ -35,6 +37,6 @@ export class PopupCloseDirective {
       )
     )
 
-    this.modalClose = merge(clickOutside$, esc$)
+    this.popupClose = merge(clickOutside$, esc$)
   }
 }
