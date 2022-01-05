@@ -18,12 +18,10 @@ export class AdminAPIComponent implements OnInit {
   formGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.minLength(2)], [PersonValidation.isValidAsync]),
     lastName: new FormControl(''),
-    phone: new FormControl('', [Validators.required, PersonValidation.isValidPhone]), // I know that there is Validators.pattern but i wanted to write it myself this time
+    phone: new FormControl('', [Validators.required, PersonValidation.isValidPhone]),
     address: new FormControl(''),
     message: new FormControl('')
   })
-  // Zmień validatory
-  // Dodaj guarda
 
   onSubmit (): void {
     if (!this.formGroup.valid) {
