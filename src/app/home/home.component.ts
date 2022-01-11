@@ -16,12 +16,7 @@ export class HomeComponent implements OnInit {
   public displayedColumns: string[] = ['temp2m', 'cloudcover', 'direction', 'speed'];
   public dataSource: Data[] = [];
   public isLoadingResults = true;
-<<<<<<< HEAD
   constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService, readonly notificationService: NotificationService, readonly modal$$: ModalService) {
-=======
-  buttonValue = '';
-  constructor (private weather: WeatherAPIService) {
->>>>>>> 5e0253a (created basic dropdown-like component on buttons #17)
   }
 
   ngOnInit (): void {

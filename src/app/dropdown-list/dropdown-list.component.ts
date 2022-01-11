@@ -20,31 +20,27 @@ export class DropdownListComponent implements ControlValueAccessor {
 
   onChange: any = () => {}
   onTouch: any = () => {}
-  val = ''
-  set value (val: string) {
-    if (val !== undefined && this.val !== val) {
-      this.val = val
-      console.log(val)
-      this.onChange(val)
-      this.onTouch(val)
+  public value = ['']
+
+  toggleValue (val: string) {
+    if (!this.value.includes(val)) { this.value.push(val) } else {
+      const index: number = this.value.findIndex(v => v === val)
+      if (index !== -1) {
+        this.value.splice(index, 1)
+      }
     }
+    this.onChange(this.value)
+    this.onTouch(this.value)
   }
 
-  get value (): string {
-    return this.val
-  }
-
-  // this method sets the value programmatically
-  writeValue (value: any) {
+  writeValue (value: string[]) {
     this.value = value
   }
 
-  // upon UI element value changes, this method gets triggered
   registerOnChange (fn: any) {
     this.onChange = fn
   }
 
-  // upon touching the element, this method gets triggered
   registerOnTouched (fn: any) {
     this.onTouch = fn
   }
