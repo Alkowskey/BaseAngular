@@ -47,5 +47,9 @@
         <button (click)="modal$$.next('asdasd')">
             Open modal
         </button>
+        <button (click)="loadData()">Reload data</button>
+        <app-dropdown-list [(ngModel)]="buttonValue" name="val" [options]="options"></app-dropdown-list>
+        <b>selected:</b> {{buttonValue}}
     </div>
+    
 </app-popup>
