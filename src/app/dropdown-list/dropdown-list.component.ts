@@ -23,7 +23,7 @@ export class DropdownListComponent implements ControlValueAccessor {
 
   onChange: any = () => {}
   onTouch: any = () => {}
-  public value: (string[] | string) = ['']
+  value: (string[] | string) = ['']
   toggleMulti (val: string) {
     if (!Array.isArray(this.value)) return
 
