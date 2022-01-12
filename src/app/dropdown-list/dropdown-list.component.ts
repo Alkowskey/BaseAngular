@@ -18,17 +18,32 @@ export class DropdownListComponent implements ControlValueAccessor {
   @Input()
   options: string[] = ['option 1', 'option 2', 'option 3']
 
+  @Input()
+  multiSelect: boolean = false;
+
   onChange: any = () => {}
   onTouch: any = () => {}
-  public value = ['']
+  public value: (string[] | string) = ['']
+  toggleMulti (val: string) {
+    if (!Array.isArray(this.value)) return
 
-  toggleValue (val: string) {
     if (!this.value.includes(val)) { this.value.push(val) } else {
       const index: number = this.value.findIndex(v => v === val)
       if (index !== -1) {
         this.value.splice(index, 1)
       }
     }
+  }
+
+  toggleSingle (val: string) {
+    if (val !== undefined) {
+      this.value = val
+      console.log(this.value)
+    }
+  }
+
+  toggleValue (val: string) {
+    if (this.multiSelect === true) { this.toggleMulti(val) } else { this.toggleSingle(val) }
     this.onChange(this.value)
     this.onTouch(this.value)
   }
