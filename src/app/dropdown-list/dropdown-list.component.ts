@@ -26,20 +26,12 @@ export class DropdownListComponent implements ControlValueAccessor {
   value: (string[] | string) = ['']
   toggleMulti (val: string) {
     if (!Array.isArray(this.value)) return
-
-    if (!this.value.includes(val)) { this.value.push(val) } else {
-      const index: number = this.value.findIndex(v => v === val)
-      if (index !== -1) {
-        this.value.splice(index, 1)
-      }
-    }
+    const index: number = this.value.findIndex(v => v === val)
+    if (index !== -1) { this.value.splice(index, 1) } else { this.value.push(val) }
   }
 
   toggleSingle (val: string) {
-    if (val !== undefined) {
-      this.value = val
-      console.log(this.value)
-    }
+    if (val !== undefined) { this.value = val }
   }
 
   toggleValue (val: string) {
