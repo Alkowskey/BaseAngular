@@ -21,6 +21,9 @@ export class DropdownListComponent implements ControlValueAccessor {
   @Input()
   multiSelect: boolean = false;
 
+  @Input()
+  title: string = 'Options';
+
   onChange: any = () => {}
   onTouch: any = () => {}
   value: (string[] | string) = ['']

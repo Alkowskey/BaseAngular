@@ -57,5 +57,15 @@
             <i *ngFor="let val of buttonValue">{{val}}, </i>
     
     </div>
+<<<<<<< HEAD
     
 </app-popup>
+=======
+    <button (click)="loadData()">Reload data</button>
+    <app-dropdown-list [(ngModel)]="buttonValue" name="val" [title]='"Opts"' [options]="options" [multiSelect]=true></app-dropdown-list>
+    <!-- <b>selected: </b> {{buttonValue}} -->
+    <!-- if multiselect is true - receives array instead of string --->
+        <i *ngFor="let val of buttonValue">{{val}}, </i>
+
+</div>
+>>>>>>> cffe50c (Changed the look of dropdown)

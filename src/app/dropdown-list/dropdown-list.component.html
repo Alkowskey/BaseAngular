@@ -1,3 +1,6 @@
-<p>dropdown-list works!</p>
-
-<button *ngFor="let option of options" (click)='toggleValue(option)'>{{option}}</button>
+<div class="dropdown">
+    <button class="dropbtn">{{title}}</button>
+    <div class="dropdown-content">
+      <a *ngFor="let option of options" (click)='toggleValue(option)' href="#">{{option}}</a>
+    </div>
+</div>
