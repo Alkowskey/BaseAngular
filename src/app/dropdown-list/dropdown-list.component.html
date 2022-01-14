@@ -1,6 +1,10 @@
 <div class="dropdown">
     <button class="dropbtn">{{title}}</button>
     <div class="dropdown-content">
-      <a *ngFor="let option of options" (click)='toggleValue(option)' href="#">{{option}}</a>
+      <a *ngFor="let option of options" (click)='toggleValue(option)' href="#">
+        {{option}} 
+        <span *ngIf="multiSelect == true && value.includes(option)">&#9989;</span>
+        <span *ngIf="multiSelect == false && value == option">&#9989;</span>
+      </a>
     </div>
 </div>
