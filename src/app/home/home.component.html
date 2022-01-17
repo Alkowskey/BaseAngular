@@ -1,5 +1,9 @@
-<p>{{ title }} home works!</p>
 
+<div class="notifications">
+    <app-notification *ngFor="let item of notificationService | async" [observer]="item.observer">
+      {{item.content}}
+    </app-notification>
+</div>
 <div class="container">
     <div class="loading-shade" *ngIf="isLoadingResults">
         <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -36,4 +40,7 @@
         </mat-table>
     </div>
     <button (click)="loadData()">Reload data</button>
+    <button (click)="show()">
+        Show toast
+    </button>
 </div>
