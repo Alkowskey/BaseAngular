@@ -12,6 +12,7 @@ import { MaterialModule } from './modules/material/material.module'
 import { NotificationComponent } from './notification/notification.component'
 import { PopupComponent } from './popup/popup.component'
 import { PopupCloseDirective } from './directives/popup-close.directive'
+import { FpsCounterComponent } from './fps-counter/fps-counter.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PopupCloseDirective } from './directives/popup-close.directive'
     HomeComponent,
     NotificationComponent,
     PopupComponent,
-    PopupCloseDirective
+    PopupCloseDirective,
+    FpsCounterComponent
   ],
   imports: [
     BrowserModule,
