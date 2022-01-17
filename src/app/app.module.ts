@@ -10,12 +10,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FocusOnElementService } from './services/focus-on-element.service'
 import { MaterialModule } from './modules/material/material.module'
 import { NotificationComponent } from './notification/notification.component'
+import { PopupComponent } from './popup/popup.component'
+import { PopupCloseDirective } from './directives/popup-close.directive'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotificationComponent
+    NotificationComponent,
+    PopupComponent,
+    PopupCloseDirective
   ],
   imports: [
     BrowserModule,
