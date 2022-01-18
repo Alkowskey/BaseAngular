@@ -1,6 +1,7 @@
-import { Component, forwardRef, Input } from '@angular/core'
+import { Component, forwardRef, Input, OnInit } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
+type stringTypes = (string[] | string);
 @Component({
   selector: 'app-dropdown-list',
   templateUrl: './dropdown-list.component.html',
@@ -13,23 +14,44 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
     }
   ]
 })
-export class DropdownListComponent implements ControlValueAccessor {
-  constructor () { }
+export class DropdownListComponent implements ControlValueAccessor, OnInit {
+  constructor () {
+    if (this.multiSelect) { this.value = [] } else this.value = ''
+    console.log('On init')
+  }
+
   @Input()
   options: string[] = ['option 1', 'option 2', 'option 3']
 
+  _multiple: boolean = false;
+  value: stringTypes;
+
   @Input()
-  multiSelect: boolean = false;
+  get multiSelect (): boolean {
+    return this._multiple
+  };
+
+  set multiSelect (multiple: boolean) {
+    this._multiple = multiple
+
+    if (multiple) this.value = []
+    else this.value = ''
+  }
 
   @Input()
   title: string = 'Options';
 
   onChange: any = () => {}
   onTouch: any = () => {}
-  value: (string[] | string) = ['']
+  ngOnInit () {
+    if (this.multiSelect) { this.value = [] } else this.value = ''
+    console.log('On init')
+  }
+
+  // ngOnChanges,
   toggleMulti (val: string) {
     if (!Array.isArray(this.value)) return
-    const index: number = this.value.findIndex(v => v === val)
+    const index: number = this.value.findIndex((v: string) => v === val)
     if (index !== -1) { this.value.splice(index, 1) } else { this.value.push(val) }
   }
 
@@ -38,7 +60,7 @@ export class DropdownListComponent implements ControlValueAccessor {
   }
 
   toggleValue (val: string) {
-    if (this.multiSelect === true) { this.toggleMulti(val) } else { this.toggleSingle(val) }
+    if (this.multiSelect) { this.toggleMulti(val) } else { this.toggleSingle(val) }
     this.onChange(this.value)
     this.onTouch(this.value)
   }
