@@ -17,14 +17,16 @@ type stringTypes = (string[] | string);
 export class DropdownListComponent implements ControlValueAccessor, OnInit {
   constructor () {
     if (this.multiSelect) { this.value = [] } else this.value = ''
-    console.log('On init')
   }
 
   @Input()
   options: string[] = ['option 1', 'option 2', 'option 3']
 
   _multiple: boolean = false;
-  value: stringTypes;
+  value: stringTypes = [];
+
+  @Input()
+  hiddenOptions: string[] = [];
 
   @Input()
   get multiSelect (): boolean {
@@ -43,9 +45,10 @@ export class DropdownListComponent implements ControlValueAccessor, OnInit {
 
   onChange: any = () => {}
   onTouch: any = () => {}
+
   ngOnInit () {
     if (this.multiSelect) { this.value = [] } else this.value = ''
-    console.log('On init')
+    console.log(this.hiddenOptions)
   }
 
   // ngOnChanges,
