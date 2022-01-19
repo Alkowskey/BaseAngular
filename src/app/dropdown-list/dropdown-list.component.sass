@@ -1,8 +1,4 @@
-@mixin disabled ($bColor, $fColor)
-  background: $bColor
-  color: $fColor
-  pointer-events: none
-  cursor: not-allowed
+@import '../shared/css/mixins'
   
 .disabledElement
   @include disabled ($bColor: #dddddd, $fColor: #615f5f)
