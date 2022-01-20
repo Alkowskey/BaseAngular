@@ -36,8 +36,7 @@ export class DropdownListComponent implements ControlValueAccessor, OnInit {
   set multiSelect (multiple: boolean) {
     this._multiple = multiple
 
-    if (multiple) this.value = []
-    else this.value = ''
+    if (multiple) { this.value = [] } else this.value = ''
   }
 
   @Input()
@@ -51,9 +50,8 @@ export class DropdownListComponent implements ControlValueAccessor, OnInit {
     console.log(this.hiddenOptions)
   }
 
-  // ngOnChanges,
   toggleMulti (val: string) {
-    if (!Array.isArray(this.value)) return
+    this.value = this.value as []
     const index: number = this.value.findIndex((v: string) => v === val)
     if (index !== -1) { this.value.splice(index, 1) } else { this.value.push(val) }
   }
