@@ -12,14 +12,18 @@ import { ModalService } from '../services/modal.service'
 })
 export class HomeComponent implements OnInit {
   title = 'loginApp Home';
+  options: string[] = ['option 1', 'option 2', 'option 3', 'option from home']
+  hiddenOptions: string[] = ['option 1']
   public displayedColumns: string[] = ['temp2m', 'cloudcover', 'direction', 'speed'];
   public dataSource: Data[] = [];
   public isLoadingResults = true;
+  buttonValue = '';
   constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService, readonly notificationService: NotificationService, readonly modal$$: ModalService) {
   }
 
   ngOnInit (): void {
     this.loadData()
+    setTimeout(() => { this.hiddenOptions.push('option 3') }, 1000)
   }
 
   loadData (): void {

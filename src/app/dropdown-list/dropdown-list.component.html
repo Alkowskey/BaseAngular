@@ -1,0 +1,10 @@
+<div class="dropdown">
+    <button class="dropbtn">{{title}}</button>
+    <div class="dropdown-content">
+      <div class="selectBox" *ngFor="let option of options" [class.disabledElement]="hiddenOptions.includes(option)" (click)='toggleValue(option)' href="#">
+        {{option}} 
+        <span *ngIf="multiSelect == true && value.includes(option)">&#9989;</span>
+        <span *ngIf="multiSelect == false && value == option">&#9989;</span>
+      </div>
+    </div>
+</div>

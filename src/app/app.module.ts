@@ -13,6 +13,8 @@ import { NotificationComponent } from './notification/notification.component'
 import { PopupComponent } from './popup/popup.component'
 import { PopupCloseDirective } from './directives/popup-close.directive'
 import { FpsCounterComponent } from './fps-counter/fps-counter.component'
+import { DropdownListComponent } from './dropdown-list/dropdown-list.component'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { FpsCounterComponent } from './fps-counter/fps-counter.component'
     NotificationComponent,
     PopupComponent,
     PopupCloseDirective,
-    FpsCounterComponent
+    FpsCounterComponent,
+    DropdownListComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
