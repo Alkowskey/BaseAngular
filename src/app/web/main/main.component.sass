@@ -1,5 +1,21 @@
+@mixin rect($size, $color)
+    background: $color
+    box-shadow: 0px 10px 30px rgba(206, 206, 206, 0.6)
+    width: $size
+    height: $size
+    line-height: $size
+    color: white
+    font-size: 30px
+    text-align: center
+
 header
+    height: 100%
+    width: 90%
     display: flex
+    flex-direction: row
+    justify-content: space-between
+    margin-right: 5%
+    margin-left: 5%
     .navText
         font-family: Roboto
         font-style: normal
@@ -13,14 +29,81 @@ header
 
 .circle 
     background-color:#fff
-    border:1px solid red   
-    height:25px
-    width:25px
+    border:1px solid #404041   
+    height:40px
+    width:40px
     border-radius:50%
     -moz-border-radius:50
     -webkit-border-radius:50%
+    display: flex
+    justify-content: center
+    align-items: center
+
 img
     display: block
     margin-left: auto
-    margin-right: auto 
+    margin-right: auto
+
+.bank-text
+    font-family: Bai Jamjuree
+    font-style: normal
+    font-weight: bol
+    font-size: 80px
+    line-height: 80px
+    letter-spacing: -0.01em
+    color: #222223
+.bank-text-sm
+    font-family: Roboto
+    font-style: normal
+    font-weight: normal
+    font-size: 18px
+    line-height: 30px
+    letter-spacing: 0.01em
+    color: #535354
+    padding-top: 10px
+    padding-bottom: 10px
+.text-bold
+    font-family: Bai Jamjuree
+    font-style: normal
+    font-weight: bold
+    font-size: 35px
+    line-height: 42px
+    /* or 120% */
+    color: #222223
+.text-ad-small
+    font-family: Inter
+    font-style: normal
+    font-weight: bold
+    font-size: 20px
+    line-height: 28px
+    /* identical to box height, or 140% */
+    letter-spacing: 0.01em
+    color: #17181A
+
+.rect
+    @include rect($size: 50px, $color: #222223)
+.card-box
+    width: 25%
+.card-text
+    font-family: Roboto
+    font-style: normal
+    font-weight: 500
+    font-size: 19px
+    color: #222223
+    padding-left: 10px
+    display: flex
+    justify-content: center
+    align-items: center
+.card-content
+    display: flex
+.content
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 100px
+    img
+        width: 40%
+.ads
+    display: flex
+    
         
