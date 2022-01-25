@@ -16,7 +16,8 @@ import { FpsCounterComponent } from './fps-counter/fps-counter.component'
 import { DropdownListComponent } from './dropdown-list/dropdown-list.component'
 import { FormsModule } from '@angular/forms';
 import { MainComponent } from './web/main/main.component';
-import { SocialPageComponent } from './web/social-page/social-page.component'
+import { SocialPageComponent } from './web/social-page/social-page.component';
+import { CustomersPageComponent } from './web/customers-page/customers-page.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SocialPageComponent } from './web/social-page/social-page.component'
     FpsCounterComponent,
     DropdownListComponent,
     MainComponent,
-    SocialPageComponent
+    SocialPageComponent,
+    CustomersPageComponent
   ],
   imports: [
     BrowserModule,
