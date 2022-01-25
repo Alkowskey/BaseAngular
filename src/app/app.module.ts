@@ -15,7 +15,8 @@ import { PopupCloseDirective } from './directives/popup-close.directive'
 import { FpsCounterComponent } from './fps-counter/fps-counter.component'
 import { DropdownListComponent } from './dropdown-list/dropdown-list.component'
 import { FormsModule } from '@angular/forms';
-import { MainComponent } from './web/main/main.component'
+import { MainComponent } from './web/main/main.component';
+import { SocialPageComponent } from './web/social-page/social-page.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MainComponent } from './web/main/main.component'
     PopupCloseDirective,
     FpsCounterComponent,
     DropdownListComponent,
-    MainComponent
+    MainComponent,
+    SocialPageComponent
   ],
   imports: [
     BrowserModule,
