@@ -17,7 +17,8 @@ import { DropdownListComponent } from './dropdown-list/dropdown-list.component'
 import { FormsModule } from '@angular/forms';
 import { MainComponent } from './web/main/main.component';
 import { SocialPageComponent } from './web/social-page/social-page.component';
-import { CustomersPageComponent } from './web/customers-page/customers-page.component'
+import { CustomersPageComponent } from './web/customers-page/customers-page.component';
+import { AboutusComponent } from './web/aboutus/aboutus.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CustomersPageComponent } from './web/customers-page/customers-page.comp
     DropdownListComponent,
     MainComponent,
     SocialPageComponent,
-    CustomersPageComponent
+    CustomersPageComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
