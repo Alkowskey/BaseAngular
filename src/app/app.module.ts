@@ -14,12 +14,14 @@ import { PopupComponent } from './popup/popup.component'
 import { PopupCloseDirective } from './directives/popup-close.directive'
 import { FpsCounterComponent } from './fps-counter/fps-counter.component'
 import { DropdownListComponent } from './dropdown-list/dropdown-list.component'
-import { FormsModule } from '@angular/forms';
-import { MainComponent } from './web/main/main.component';
-import { SocialPageComponent } from './web/social-page/social-page.component';
-import { CustomersPageComponent } from './web/customers-page/customers-page.component';
-import { AboutusComponent } from './web/aboutus/aboutus.component';
+import { FormsModule } from '@angular/forms'
+import { MainComponent } from './web/main/main.component'
+import { SocialPageComponent } from './web/social-page/social-page.component'
+import { CustomersPageComponent } from './web/customers-page/customers-page.component'
+import { AboutusComponent } from './web/aboutus/aboutus.component'
 import { NewsletterComponent } from './web/newsletter/newsletter.component'
+import { FooterComponent } from './web/footer/footer.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { NewsletterComponent } from './web/newsletter/newsletter.component'
     SocialPageComponent,
     CustomersPageComponent,
     AboutusComponent,
-    NewsletterComponent
+    NewsletterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { NewsletterComponent } from './web/newsletter/newsletter.component'
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FontAwesomeModule
   ],
   providers: [FocusOnElementService],
   bootstrap: [AppComponent]
