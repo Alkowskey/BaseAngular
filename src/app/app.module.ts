@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { MainComponent } from './web/main/main.component';
 import { SocialPageComponent } from './web/social-page/social-page.component';
 import { CustomersPageComponent } from './web/customers-page/customers-page.component';
-import { AboutusComponent } from './web/aboutus/aboutus.component'
+import { AboutusComponent } from './web/aboutus/aboutus.component';
+import { NewsletterComponent } from './web/newsletter/newsletter.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AboutusComponent } from './web/aboutus/aboutus.component'
     MainComponent,
     SocialPageComponent,
     CustomersPageComponent,
-    AboutusComponent
+    AboutusComponent,
+    NewsletterComponent
   ],
   imports: [
     BrowserModule,
