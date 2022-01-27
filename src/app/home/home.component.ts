@@ -23,7 +23,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit (): void {
     this.loadData()
-    setTimeout(() => { this.hiddenOptions.push('option 3') }, 1000)
+    setTimeout(() => {
+      this.hiddenOptions.push('option 3')
+      this.hiddenOptions = [...this.hiddenOptions] // Had to update reference of type in order to use OnPush
+    }, 1000)
   }
 
   loadData (): void {
