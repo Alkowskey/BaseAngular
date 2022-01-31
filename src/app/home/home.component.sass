@@ -27,3 +27,16 @@
 .mat-column-temp2m, .mat-column-cloudcover, .mat-column-direction, .mat-column-speed
   min-width: 25%
   justify-content: center
+
+.block
+  position:relative
+  width: 200px
+  height: 80px
+  background-color: #522d5b
+  &:after
+    content: ""
+    display: block
+    width: 70%
+    margin: 1em auto 0
+    border-bottom: 2px solid red
+
