@@ -108,5 +108,34 @@
     &:before
       left: 85px
       background: white
+.bl
+  width: 4vw
+  height: 100px
+  background-color: #3E3E3E
+  transition: all 0.2s ease-in-out
+  .hamburger:checked ~ &
+    width: 15vw
+    .menuText
+      visibility: visible
+      color: white
+.hamb
+  font-size: 50px
+  color: #A0A0A0
+  &:hover
+    color: #909090
+
+.hamburger
+  display: none
+
+.element
+  padding-left: .5em
+  padding-top: 20px
+  display: flex
+  font-size: 25px
+  color: white
+
+.menuText
+  padding-left: .5em
+  visibility: hidden
   
 
