@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
-interface Element {
+export interface MenuElement {
   icon: string;
   name: string;
 }
@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
   faInstagram = faInstagram;
   faYoutube = faYoutube
   @Input()
-  elements: Element[] = [{ icon: 'home', name: 'Home' }, { icon: 'domain', name: 'Main' }]
+  elements: MenuElement[] = [];
 
   constructor () { }
 

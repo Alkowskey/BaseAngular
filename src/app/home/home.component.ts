@@ -4,6 +4,7 @@ import { WeatherAPIService } from '../services/weather-api.service'
 import { PageVisibilityService } from '../services/page-visibility.service'
 import { NotificationService } from '../services/notification.service'
 import { ModalService } from '../services/modal.service'
+import { MenuElement } from '../menu/menu.component'
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   public dataSource: Data[] = [];
   public isLoadingResults = true;
   buttonValue = '';
+  menuElements: MenuElement[] = [{ icon: 'home', name: 'Home' }, { icon: 'domain', name: 'Main' }, { icon: 'settings', name: 'Settings' }]
   constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService, readonly notificationService: NotificationService, readonly modal$$: ModalService, private changeRef: ChangeDetectorRef) {
   }
 
