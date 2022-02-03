@@ -21,7 +21,8 @@ import { CustomersPageComponent } from './web/customers-page/customers-page.comp
 import { AboutusComponent } from './web/aboutus/aboutus.component'
 import { NewsletterComponent } from './web/newsletter/newsletter.component'
 import { FooterComponent } from './web/footer/footer.component'
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MenuComponent } from './menu/menu.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     CustomersPageComponent,
     AboutusComponent,
     NewsletterComponent,
-    FooterComponent
+    FooterComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

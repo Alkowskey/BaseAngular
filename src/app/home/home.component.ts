@@ -4,7 +4,6 @@ import { WeatherAPIService } from '../services/weather-api.service'
 import { PageVisibilityService } from '../services/page-visibility.service'
 import { NotificationService } from '../services/notification.service'
 import { ModalService } from '../services/modal.service'
-import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 @Component({
   selector: 'app-home',
@@ -20,9 +19,6 @@ export class HomeComponent implements OnInit {
   public dataSource: Data[] = [];
   public isLoadingResults = true;
   buttonValue = '';
-  faFacebook = faFacebook;
-  faInstagram = faInstagram;
-  faYoutube = faYoutube
   constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService, readonly notificationService: NotificationService, readonly modal$$: ModalService, private changeRef: ChangeDetectorRef) {
   }
 
