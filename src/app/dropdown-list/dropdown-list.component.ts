@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, forwardRef, Input, ChangeDetectorRef } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 type stringTypes = (string[] | string);
@@ -16,7 +16,10 @@ type stringTypes = (string[] | string);
   changeDetection: ChangeDetectionStrategy.OnPush // On push detecion
 })
 export class DropdownListComponent implements ControlValueAccessor {
-  constructor () {
+  constructor (private changeDetector : ChangeDetectorRef) {
+    setTimeout(() => {
+      this.changeDetector.detectChanges()
+    }, 6000)
   }
 
   @Input()

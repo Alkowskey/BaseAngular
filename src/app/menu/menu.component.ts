@@ -1,6 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 
+/*
+  Provides schema for input elements
+  icon - icon name from materialUI list: https://fonts.google.com/icons
+  name - string that will be displayed next to icon
+*/
 export interface MenuElement {
   icon: string;
   name: string;
@@ -12,12 +17,10 @@ export interface MenuElement {
   styleUrls: ['./menu.component.sass']
 })
 export class MenuComponent implements OnInit {
-  faFacebook = faFacebook;
-  faInstagram = faInstagram;
-  faYoutube = faYoutube
   @Input()
   elements: MenuElement[] = [];
 
+  faFacebook = faFacebook;
   constructor () { }
 
   ngOnInit (): void {

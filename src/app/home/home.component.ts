@@ -28,10 +28,6 @@ export class HomeComponent implements OnInit {
     this.loadData()
     setTimeout(() => {
       this.hiddenOptions.push('option 3')
-      this.changeRef.detectChanges()
-      this.changeRef.markForCheck()
-      // this.hiddenOptions = [...this.hiddenOptions, 'option 3']
-      // this.hiddenOptions = [...this.hiddenOptions] // Had to update reference of type in order to use OnPush
     }, 5000)
   }
 
