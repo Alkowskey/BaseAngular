@@ -5,6 +5,7 @@ import { PageVisibilityService } from '../services/page-visibility.service'
 import { NotificationService } from '../services/notification.service'
 import { ModalService } from '../services/modal.service'
 import { MenuElement } from '../menu/menu.component'
+import { Subject } from 'rxjs'
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,9 @@ export class HomeComponent implements OnInit {
   title = 'loginApp Home';
   options: string[] = ['option 1', 'option 2', 'option 3', 'option from home']
   hiddenOptions: string[] = ['option 1']
+
+  subject = new Subject<number>();
+
   public displayedColumns: string[] = ['temp2m', 'cloudcover', 'direction', 'speed'];
   public dataSource: Data[] = [];
   public isLoadingResults = true;
@@ -28,7 +32,8 @@ export class HomeComponent implements OnInit {
     this.loadData()
     setTimeout(() => {
       this.hiddenOptions.push('option 3')
-    }, 5000)
+      this.subject.next(1)
+    }, 10000)
   }
 
   loadData (): void {
@@ -38,6 +43,7 @@ export class HomeComponent implements OnInit {
       if (data?.dataseries == null) { this.dataSource = [] } else {
         this.isLoadingResults = false
         this.dataSource = data?.dataseries
+        this.changeRef.detectChanges()
       }
     })
   }

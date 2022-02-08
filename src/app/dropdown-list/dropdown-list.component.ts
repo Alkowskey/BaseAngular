@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, ChangeDetectorRef } from '@angular/core'
+import { ChangeDetectionStrategy, Component, forwardRef, Input, ChangeDetectorRef, OnInit } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
+import { Subject } from 'rxjs'
 
 type stringTypes = (string[] | string);
 @Component({
@@ -15,11 +16,8 @@ type stringTypes = (string[] | string);
   ],
   changeDetection: ChangeDetectionStrategy.OnPush // On push detecion
 })
-export class DropdownListComponent implements ControlValueAccessor {
+export class DropdownListComponent implements ControlValueAccessor, OnInit {
   constructor (private changeDetector : ChangeDetectorRef) {
-    setTimeout(() => {
-      this.changeDetector.detectChanges()
-    }, 6000)
   }
 
   @Input()
@@ -30,6 +28,9 @@ export class DropdownListComponent implements ControlValueAccessor {
 
   _multiple: boolean = true;
   value: stringTypes = [];
+
+  @Input()
+  event = new Subject<number>();
 
   @Input()
   get multiSelect (): boolean {
@@ -51,6 +52,11 @@ export class DropdownListComponent implements ControlValueAccessor {
 
   onChange: any = () => {}
   onTouch: any = () => {}
+  ngOnInit (): void {
+    this.event.subscribe(() => {
+      this.changeDetector.detectChanges()
+    })
+  }
 
   toggleMulti (val: string) {
     this.value = this.value as []
