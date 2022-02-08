@@ -1,0 +1,62 @@
+@import '../../shared/css/mixins'
+.text-bold
+    font-family: Bai Jamjuree
+    font-style: normal
+    font-weight: bold
+    font-size: 80px
+    line-height: 80px
+    text-align: center
+    letter-spacing: 0.01em
+    color: #0D1111
+    padding-top: 1.5em
+    padding-bottom: .5em
+
+.text-sm
+    font-family: Roboto
+    font-style: normal
+    font-weight: normal
+    font-size: 16px
+    line-height: 28px
+    text-align: center
+    color: #767E7E
+
+.text-wrapper
+    width: 40em
+    margin-left: auto
+    margin-right: auto
+    margin-bottom: 3em
+
+.line
+    @include ver-line (700)
+    
+.ad-wrapper
+    height: 100px
+.ad-text-big
+    font-family: Inter
+    font-style: normal
+    font-weight: 500
+    font-size: 16px
+    line-height: 20px
+    text-align: center
+    letter-spacing: 0.4em
+    color: #718176
+.ad-text-sm
+    font-family: Roboto
+    font-style: normal
+    font-weight: 500
+    font-size: 25px
+    line-height: 40px
+    text-align: center
+    letter-spacing: 0.01em
+    color: #000000
+.ad
+    padding-top: 4em
+    padding-bottom: 4em
+    width: 20%
+.ad:not(:last-child)
+    border-right: 1px solid #000
+
+.ad-container
+    display: flex
+    justify-content: center
+    align-content: center

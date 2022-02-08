@@ -47,11 +47,29 @@
         <button (click)="modal$$.next('asdasd')">
             Open modal
         </button>
-        <app-dropdown-list [(ngModel)]="buttonValue" name="val" [title]='"Opts"' [options]="options" [multiSelect]=true [hiddenOptions] = "hiddenOptions"></app-dropdown-list>
+        <app-dropdown-list [(ngModel)]="buttonValue" name="val" [title]='"Opts"' [options]="options" [multiSelect]=true [hiddenOptions] = "hiddenOptions" [event]="subject"></app-dropdown-list>
         <!-- <b>selected: </b> {{buttonValue}} -->
         <!-- if multiselect is true - receives array instead of string --->
             <i *ngFor="let val of buttonValue">{{val}}, </i>
+
+        <div class="block"></div>
+        <a class="button" href="#">
+            <div class="primary">
+              <!-- <span class="icon fa fa-cloud-download"></span> -->
+              Download
+            </div>
+            
+            <div class="secondary">
+              <span class="icon fa fa-hdd-o"></span>
+              Size: 12 MB
+            </div>
+        </a>
+        <label class="switch">
+            <input class="switchInput" type="checkbox">
+            <div class="switchIndicator"></div>
+        </label>
     
     </div>
+    <app-menu [elements]="menuElements"></app-menu>
     
 </app-popup>

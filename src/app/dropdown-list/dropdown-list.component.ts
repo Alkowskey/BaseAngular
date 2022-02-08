@@ -1,5 +1,6 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, forwardRef, Input, ChangeDetectorRef, OnInit } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
+import { Subject } from 'rxjs'
 
 type stringTypes = (string[] | string);
 @Component({
@@ -12,21 +13,24 @@ type stringTypes = (string[] | string);
       useExisting: forwardRef(() => DropdownListComponent),
       multi: true
     }
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush // On push detecion
 })
 export class DropdownListComponent implements ControlValueAccessor, OnInit {
-  constructor () {
-    if (this.multiSelect) { this.value = [] } else this.value = ''
+  constructor (private changeDetector : ChangeDetectorRef) {
   }
 
   @Input()
-  options: string[] = ['option 1', 'option 2', 'option 3']
-
-  _multiple: boolean = false;
-  value: stringTypes = [];
+  options: string[] = []
 
   @Input()
   hiddenOptions: string[] = [];
+
+  _multiple: boolean = true;
+  value: stringTypes = [];
+
+  @Input()
+  event = new Subject<number>();
 
   @Input()
   get multiSelect (): boolean {
@@ -36,7 +40,11 @@ export class DropdownListComponent implements ControlValueAccessor, OnInit {
   set multiSelect (multiple: boolean) {
     this._multiple = multiple
 
-    if (multiple) { this.value = [] } else this.value = ''
+    if (this._multiple) {
+      this.value = []
+    } else {
+      this.value = ''
+    }
   }
 
   @Input()
@@ -44,10 +52,10 @@ export class DropdownListComponent implements ControlValueAccessor, OnInit {
 
   onChange: any = () => {}
   onTouch: any = () => {}
-
-  ngOnInit () {
-    if (this.multiSelect) { this.value = [] } else this.value = ''
-    console.log(this.hiddenOptions)
+  ngOnInit (): void {
+    this.event.subscribe(() => {
+      this.changeDetector.detectChanges()
+    })
   }
 
   toggleMulti (val: string) {
@@ -67,7 +75,7 @@ export class DropdownListComponent implements ControlValueAccessor, OnInit {
   }
 
   writeValue (value: string[]) {
-    this.value = value
+    if (value) { this.value = value }
   }
 
   registerOnChange (fn: any) {

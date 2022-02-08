@@ -1,0 +1,55 @@
+@import '../../shared/css/mixins'
+.content
+    height: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    margin-right: 10vw
+    margin-left: 10vw
+    padding-top: 10vh
+    .navText
+        font-family: Roboto
+        font-style: normal
+        font-weight: 500
+        font-size: 14px
+        line-height: 20px
+        text-align: center
+        letter-spacing: 0.01em
+        color: #404041
+        padding-right: 2vw
+.socialButtons
+    display: flex
+    .socialText
+        padding-right: 2vw
+    fa-icon
+        padding-right: 1vw
+.socialText
+    font-family: Roboto
+    font-style: normal
+    font-weight: bold
+    font-size: 14px
+    line-height: 20px
+    text-align: center
+    letter-spacing: 0.01em
+    color: #404041
+
+.textBottom
+    font-family: Roboto
+    font-style: normal
+    font-weight: normal
+    font-size: 12px
+    line-height: 14px
+    text-align: center
+    color: rgba(27, 27, 27, 0.35)
+    
+.line
+    @include ver-line (500)
+    width: 65vw
+
+footer
+    display: flex
+    margin: auto
+    justify-content: center
+    align-items: center
+    padding-bottom: 3vh
+    padding-top: 10vh

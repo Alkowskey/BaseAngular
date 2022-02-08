@@ -15,6 +15,14 @@ import { PopupCloseDirective } from './directives/popup-close.directive'
 import { FpsCounterComponent } from './fps-counter/fps-counter.component'
 import { DropdownListComponent } from './dropdown-list/dropdown-list.component'
 import { FormsModule } from '@angular/forms'
+import { MainComponent } from './web/main/main.component'
+import { SocialPageComponent } from './web/social-page/social-page.component'
+import { CustomersPageComponent } from './web/customers-page/customers-page.component'
+import { AboutusComponent } from './web/aboutus/aboutus.component'
+import { NewsletterComponent } from './web/newsletter/newsletter.component'
+import { FooterComponent } from './web/footer/footer.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MenuComponent } from './menu/menu.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +32,14 @@ import { FormsModule } from '@angular/forms'
     PopupComponent,
     PopupCloseDirective,
     FpsCounterComponent,
-    DropdownListComponent
+    DropdownListComponent,
+    MainComponent,
+    SocialPageComponent,
+    CustomersPageComponent,
+    AboutusComponent,
+    NewsletterComponent,
+    FooterComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +47,8 @@ import { FormsModule } from '@angular/forms'
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FontAwesomeModule
   ],
   providers: [FocusOnElementService],
   bootstrap: [AppComponent]

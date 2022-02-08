@@ -3,3 +3,17 @@
   color: $fColor
   pointer-events: none
   cursor: not-allowed
+
+@mixin ver-line ($size)
+  display:block
+  border:none
+  color:white
+  height:1px
+  background:black
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, $size, from(#000), to(#E5E5E5))
+
+@mixin hor-line ($size)
+    border-left: $size solid #718176
+    height: 8vw
+    margin-left: 3vw
+    margin-right: 3vw

@@ -1,0 +1,12 @@
+<input type="checkbox" class="hamburger" id="btnControl"/>
+<label class="btn" for="btnControl">
+    <fa-icon class="hamb" [icon]="faFacebook"></fa-icon>
+</label>
+<div class="bl">
+    <div class="element" *ngFor="let element of elements">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">{{element?.icon}}</mat-icon>
+        <div class="menuText">
+            {{element?.name}}
+        </div>
+    </div>
+</div>
