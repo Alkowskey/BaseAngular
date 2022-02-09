@@ -22,7 +22,8 @@ import { AboutusComponent } from './web/aboutus/aboutus.component'
 import { NewsletterComponent } from './web/newsletter/newsletter.component'
 import { FooterComponent } from './web/footer/footer.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MenuComponent } from './menu/menu.component'
+import { MenuComponent } from './menu/menu.component';
+import { UsersTabComponent } from './users-tab/users-tab.component'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MenuComponent } from './menu/menu.component'
     AboutusComponent,
     NewsletterComponent,
     FooterComponent,
-    MenuComponent
+    MenuComponent,
+    UsersTabComponent
   ],
   imports: [
     BrowserModule,

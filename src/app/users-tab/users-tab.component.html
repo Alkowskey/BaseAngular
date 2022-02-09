@@ -1,0 +1,18 @@
+<fieldset *ngIf="users$ | async as users" [disabled]="loading$ | async">
+    <form (submit)="add$.next(name)">
+      <input
+        name="name"
+        placeholder="Enter user name"
+        autocomplete="off"
+        [(ngModel)]="name"
+      />
+      <button [disabled]="isDisabled(users)">Add user</button>
+      <button type="button" (click)="refresh$.next(null)">Refresh</button>
+    </form>
+    <p *ngFor="let user of users">
+      <button type="button" (click)="remove$.next(user)">
+        X
+      </button>
+      {{user}}
+    </p>
+  </fieldset>
