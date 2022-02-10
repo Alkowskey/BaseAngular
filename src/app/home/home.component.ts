@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
 
   subject = new Subject<number>();
 
+  curr: number = 10;
+  total: number = 100;
+
   public displayedColumns: string[] = ['temp2m', 'cloudcover', 'direction', 'speed'];
   public dataSource: Data[] = [];
   public isLoadingResults = true;
@@ -33,6 +36,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.hiddenOptions.push('option 3')
       this.subject.next(1)
+      this.curr = 50
     }, 10000)
   }
 

@@ -23,7 +23,8 @@ import { NewsletterComponent } from './web/newsletter/newsletter.component'
 import { FooterComponent } from './web/footer/footer.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuComponent } from './menu/menu.component';
-import { UsersTabComponent } from './users-tab/users-tab.component'
+import { UsersTabComponent } from './users-tab/users-tab.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UsersTabComponent } from './users-tab/users-tab.component'
     NewsletterComponent,
     FooterComponent,
     MenuComponent,
-    UsersTabComponent
+    UsersTabComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
