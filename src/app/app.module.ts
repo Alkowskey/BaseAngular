@@ -24,7 +24,8 @@ import { FooterComponent } from './web/footer/footer.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuComponent } from './menu/menu.component';
 import { UsersTabComponent } from './users-tab/users-tab.component';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component'
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { ColorsComponent } from './colors/colors.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component'
     FooterComponent,
     MenuComponent,
     UsersTabComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    ColorsComponent
   ],
   imports: [
     BrowserModule,

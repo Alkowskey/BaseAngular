@@ -2,17 +2,16 @@ import { Injectable } from '@angular/core'
 import { Observable, defer, timer } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-let USERS = ['John', 'Jane', 'Jack', 'Jill']
-
+let COLORS = ['Red', 'White']
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  getUsers (): Observable<string[]> {
+export class ColorsService {
+  getColors (): Observable<string[]> {
     return defer(() => {
       const delay = Math.round(Math.random() * 3000)
 
-      console.log('getting users', !(delay % 2))
+      console.log('getting colors', !(delay % 2))
 
       return timer(delay).pipe(
         map(() => {
@@ -20,16 +19,16 @@ export class UserService {
             throw new Error('Server request failed')
           }
 
-          return [...USERS]
+          return [...COLORS]
         })
       )
     })
   }
 
-  addUser (user: string): Observable<string> {
+  addColor (color: string): Observable<string> {
     const delay = Math.round(Math.random() * 3000)
 
-    console.log('adding user', !(delay % 2))
+    console.log('adding color', !(delay % 2))
 
     return timer(delay).pipe(
       map(() => {
@@ -37,18 +36,17 @@ export class UserService {
           throw new Error('Server request failed')
         }
 
-        USERS.push(user)
+        COLORS.push(color)
 
-        return user
+        return color
       })
     )
   }
-  //
 
-  removeUser (user: string): Observable<string> {
+  removeColor (color: string): Observable<string> {
     const delay = Math.round(Math.random() * 3000)
 
-    console.log('removing user', !(delay % 2))
+    console.log('removing color', !(delay % 2))
 
     return timer(delay).pipe(
       map(() => {
@@ -56,10 +54,12 @@ export class UserService {
           throw new Error('Server request failed')
         }
 
-        USERS = USERS.filter(item => item !== user)
+        COLORS = COLORS.filter(item => item !== color)
 
-        return user
+        return color
       })
     )
   }
+
+  constructor () { }
 }
