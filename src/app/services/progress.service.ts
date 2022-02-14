@@ -10,7 +10,7 @@ export class ProgressService {
     const arr = [10, 20, 30, 50, 100]
 
     return from(arr).pipe(
-      concatMap(item => of(item).pipe(delay(1000)))
+      concatMap(item => of(item).pipe(delay(1500)))
     )
   }
 }
