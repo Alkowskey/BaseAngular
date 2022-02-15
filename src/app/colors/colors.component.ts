@@ -15,8 +15,8 @@ export class ColorsComponent implements OnInit {
   readonly items$ = this.refresh$.pipe(
     switchMapTo(this.colorsService.getColors().pipe(
       catchError(() => of(null))
-    ))
-    // share moze
+    )),
+    share()
   )
 
   readonly colors$ = this.items$.pipe(
