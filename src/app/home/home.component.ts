@@ -1,13 +1,16 @@
 import { ChangeDetectorRef, Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { Subject } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
+
 import { Data, Weather } from 'src/interfaces'
+
 import { WeatherAPIService } from '../services/weather-api.service'
+import { WeatherApiMockService } from '../mock/weather-api-mock.service'
 import { PageVisibilityService } from '../services/page-visibility.service'
 import { NotificationService } from '../services/notification.service'
 import { ModalService } from '../services/modal.service'
+
 import { MenuElement } from '../menu/menu.component'
-import { Subject } from 'rxjs'
-import { HttpClient } from '@angular/common/http'
-import { WeatherApiMockService } from '../Mock/weather-api-mock.service'
 
 @Component({
   selector: 'app-home',
@@ -23,8 +26,10 @@ import { WeatherApiMockService } from '../Mock/weather-api-mock.service'
   ],
   changeDetection: ChangeDetectionStrategy.OnPush // On push detecion
 })
+
 export class HomeComponent implements OnInit {
   title = 'loginApp Home';
+
   options: string[] = ['option 1', 'option 2', 'option 3', 'option from home']
   hiddenOptions: string[] = ['option 1']
 

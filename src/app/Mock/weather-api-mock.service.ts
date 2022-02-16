@@ -1,7 +1,7 @@
-import { Data, Weather } from 'src/interfaces'
+import { Data, Weather, IWeatherAPI } from 'src/interfaces'
 import { map, Observable, of } from 'rxjs'
 
-export class WeatherApiMockService {
+export class WeatherApiMockService implements IWeatherAPI {
   constructor () { }
   getWeather (): Observable<Weather> {
     const data: Weather = { init: '2022021600', product: 'astro', dataseries: [{ timepoint: 3, cloudcover: 7, seeing: 6, transparency: 3, lifted_index: 15, rh2m: 8, wind10m: { direction: 'E', speed: 2 }, temp2m: 18, prec_type: 'none' }] }
