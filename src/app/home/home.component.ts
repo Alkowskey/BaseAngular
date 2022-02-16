@@ -6,11 +6,21 @@ import { NotificationService } from '../services/notification.service'
 import { ModalService } from '../services/modal.service'
 import { MenuElement } from '../menu/menu.component'
 import { Subject } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
+import { WeatherApiMockService } from '../Mock/weather-api-mock.service'
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass'],
+  providers: [
+    { provide: 'USE_FAKE', useValue: true },
+    {
+      provide: WeatherAPIService,
+      useFactory: (http: HttpClient, fake: boolean) => !fake ? new WeatherAPIService(http) : new WeatherApiMockService(),
+      deps: [HttpClient, 'USE_FAKE']
+    }
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush // On push detecion
 })
 export class HomeComponent implements OnInit {
