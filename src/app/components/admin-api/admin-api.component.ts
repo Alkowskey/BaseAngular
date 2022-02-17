@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
-import { PersonInput } from '../../interfaces'
-import { PersonValidation } from '../_validation/PersonValidation'
+import { PersonInput } from '../../../interfaces'
+import { PersonValidation } from '../../_validation/PersonValidation'
 
 @Component({
   selector: 'app-admin-api',

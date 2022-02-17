@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs'
 export interface PersonInput {
     id: number;
     firstName: string;
@@ -28,4 +29,10 @@ export interface Weather {
     product: string;
     init: string;
     dataseries: Data[] | undefined;
+}
+
+export interface IWeatherAPI{
+    getWeather (): Observable<Weather>;
+    countByDirection (arr: Pick<Data, 'wind10m'>[] | undefined, val: string): number;
+    groupWind (): Observable<Map<string, number>>;
 }
