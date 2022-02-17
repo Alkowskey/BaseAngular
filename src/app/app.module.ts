@@ -25,7 +25,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { MenuComponent } from './components/menu/menu.component'
 import { UsersTabComponent } from './components/users-tab/users-tab.component'
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component'
-import { ColorsComponent } from './components/colors/colors.component'
+import { ColorsComponent } from './components/colors/colors.component';
+import { OrganizationComponent } from './components/organization/organization.component'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -47,7 +48,8 @@ export const API_URL = new InjectionToken<string>('API_URL')
     MenuComponent,
     UsersTabComponent,
     ProgressBarComponent,
-    ColorsComponent
+    ColorsComponent,
+    OrganizationComponent
   ],
   imports: [
     BrowserModule,

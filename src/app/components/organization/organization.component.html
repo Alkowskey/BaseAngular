@@ -1,0 +1,5 @@
+<p>organization works!</p>
+
+<p *ngIf="organization$ | async as organization">
+   {{organization.name}} / {{organization.size}}
+</p>

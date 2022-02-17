@@ -31,6 +31,12 @@ export interface Weather {
     dataseries: Data[] | undefined;
 }
 
+export interface Organization{
+    id: number;
+    name: string;
+    size: number;
+}
+
 export interface IWeatherAPI{
     getWeather (): Observable<Weather>;
     countByDirection (arr: Pick<Data, 'wind10m'>[] | undefined, val: string): number;
