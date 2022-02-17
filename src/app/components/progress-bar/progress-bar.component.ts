@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
-import { ProgressService } from '../services/progress.service'
+import { ProgressService } from '../../services/progress.service'
 
 @Component({
   selector: 'app-progress-bar',

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { AdminAPIComponent } from '../../admin-api/admin-api.component'
+import { AdminAPIComponent } from '../../components/admin-api/admin-api.component'
 import { Routes, RouterModule } from '@angular/router'
 import { ReactiveFormsModule } from '@angular/forms'
 import PermissionGuard from '../../_utils/PermissionGuard'

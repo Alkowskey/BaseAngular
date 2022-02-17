@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { BehaviorSubject, MonoTypeOperatorFunction, Observable, Subject, combineLatest, merge, of, pipe } from 'rxjs'
 import { catchError, endWith, filter, first, mapTo, scan, share, startWith, switchMap, switchMapTo } from 'rxjs/operators'
-import { UserService } from '../services/user.service'
+import { UserService } from '../../services/user.service'
 
 @Component({
   selector: 'app-users-tab',

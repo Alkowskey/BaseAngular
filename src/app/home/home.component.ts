@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { ChangeDetectorRef, Component, OnInit, ChangeDetectionStrategy, Injector } from '@angular/core'
 import { Subject } from 'rxjs'
 import { HttpClient } from '@angular/common/http'
 
@@ -9,19 +9,20 @@ import { WeatherApiMockService } from '../mock/weather-api-mock.service'
 import { PageVisibilityService } from '../services/page-visibility.service'
 import { NotificationService } from '../services/notification.service'
 import { ModalService } from '../services/modal.service'
-
-import { MenuElement } from '../menu/menu.component'
+import { MenuElement } from '../components/menu/menu.component'
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass'],
   providers: [
-    { provide: 'USE_FAKE', useValue: true },
+    { provide: 'USE_FAKE', useValue: false },
     {
       provide: WeatherAPIService,
-      useFactory: (http: HttpClient, fake: boolean) => !fake ? new WeatherAPIService(http) : new WeatherApiMockService(),
-      deps: [HttpClient, 'USE_FAKE']
+      useFactory: (http: HttpClient, injector: Injector, fake: boolean) => {
+        return !fake ? new WeatherAPIService(http, injector) : new WeatherApiMockService()
+      },
+      deps: [HttpClient, Injector, 'USE_FAKE']
     }
   ],
   changeDetection: ChangeDetectionStrategy.OnPush // On push detecion
@@ -43,7 +44,12 @@ export class HomeComponent implements OnInit {
   public isLoadingResults = true;
   buttonValue = '';
   menuElements: MenuElement[] = [{ icon: 'home', name: 'Home' }, { icon: 'domain', name: 'Main' }, { icon: 'settings', name: 'Settings' }]
-  constructor (private weather: WeatherAPIService, private visibility: PageVisibilityService, readonly notificationService: NotificationService, readonly modal$$: ModalService, private changeRef: ChangeDetectorRef) {
+  constructor (private weather: WeatherAPIService,
+    private visibility: PageVisibilityService,
+    readonly notificationService: NotificationService,
+    readonly modal$$: ModalService,
+    private changeRef: ChangeDetectorRef
+  ) {
   }
 
   ngOnInit (): void {

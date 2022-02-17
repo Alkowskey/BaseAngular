@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { BehaviorSubject, catchError, of, switchMapTo, Observable, startWith, Subject, MonoTypeOperatorFunction, pipe, switchMap, endWith, filter, combineLatest, scan } from 'rxjs'
-import { ColorsService } from '../services/colors.service'
+import { ColorsService } from '../../services/colors.service'
 import { share } from 'rxjs/operators'
 
 @Component({

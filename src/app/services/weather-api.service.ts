@@ -1,17 +1,23 @@
-import { Injectable } from '@angular/core'
+import { Injectable, Injector } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { IWeatherAPI, Weather } from 'src/interfaces'
 import { shareReplay, Observable, map } from 'rxjs'
 import { Data } from '../../interfaces'
+import { API_URL } from '../app.module'
 
-const CACHE_SIZE = 1
-const API_URL = 'https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0'
+const CACHE_SIZE: number = 1
+let API: string
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherAPIService implements IWeatherAPI {
   private cache$!: Observable<Weather>;
-  constructor (private http: HttpClient) { }
+  constructor (private http: HttpClient,
+    private injector: Injector
+  ) {
+    API = this.injector.get(API_URL)
+    console.log('URL: ', API)
+  }
 
   getWeather (): Observable<Weather> {
     if (this.cache$) { return this.cache$ }
@@ -23,7 +29,7 @@ export class WeatherAPIService implements IWeatherAPI {
   }
 
   private requestWeather (): Observable<Weather> {
-    return this.http.get<Weather>(API_URL)
+    return this.http.get<Weather>(API)
   }
 
   public countByDirection (arr: Pick<Data, 'wind10m'>[] | undefined, val: string): number {
