@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http'
 import { Data, Weather } from 'src/interfaces'
 
 import { WeatherAPIService } from '../services/weather-api.service'
-import { WeatherApiMockService } from '../mock/weather-api-mock.service'
+import { WeatherApiMockService } from '../Mock/weather-api-mock.service'
 import { PageVisibilityService } from '../services/page-visibility.service'
 import { NotificationService } from '../services/notification.service'
 import { ModalService } from '../services/modal.service'
