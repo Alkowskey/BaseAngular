@@ -1,27 +1,18 @@
-import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
-import { OrganizationService } from 'src/app/services/organization.service'
+import { ChangeDetectionStrategy, Component, OnInit, Inject } from '@angular/core'
 import { Observable } from 'rxjs'
 import { Organization } from 'src/interfaces'
-import { switchMap } from 'rxjs/operators'
+import { ORGANIZATION_PROVIDERS, ORGANIZATION_INFO } from './organization.providers'
 
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
-  styleUrls: ['./organization.component.sass']
+  styleUrls: ['./organization.component.sass'],
+  providers: [ORGANIZATION_PROVIDERS],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrganizationComponent implements OnInit {
-  readonly organization$: Observable<Organization> = this.activatedRoute.params.pipe(
-    switchMap(params => {
-      const id: number = params['id'] // has to be this notation - disable eslint rule
-      console.log('id: ', id)
-      return this.organizationService.getOrganizationById$(id)
-    })
-  );
-
   constructor (
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly organizationService: OrganizationService
+    @Inject(ORGANIZATION_INFO) readonly organization$: Observable<Organization>
   ) { }
 
   ngOnInit (): void {
