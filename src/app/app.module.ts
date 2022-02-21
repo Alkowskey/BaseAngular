@@ -14,7 +14,7 @@ import { PopupComponent } from './components/popup/popup.component'
 import { PopupCloseDirective } from './directives/popup-close.directive'
 import { FpsCounterComponent } from './components/fps-counter/fps-counter.component'
 import { DropdownListComponent } from './components/dropdown-list/dropdown-list.component'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MainComponent } from './components/web/main/main.component'
 import { SocialPageComponent } from './components/web/social-page/social-page.component'
 import { CustomersPageComponent } from './components/web/customers-page/customers-page.component'
@@ -25,8 +25,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { MenuComponent } from './components/menu/menu.component'
 import { UsersTabComponent } from './components/users-tab/users-tab.component'
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component'
-import { ColorsComponent } from './components/colors/colors.component';
+import { ColorsComponent } from './components/colors/colors.component'
 import { OrganizationComponent } from './components/organization/organization.component'
+import { AutosaveFormComponent } from './components/autosave-form/autosave-form.component'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -49,11 +50,13 @@ export const API_URL = new InjectionToken<string>('API_URL')
     UsersTabComponent,
     ProgressBarComponent,
     ColorsComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    AutosaveFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,

@@ -1,0 +1,9 @@
+<p>autosave-form works!</p>
+<form [formGroup]="formGroup">
+    <mat-checkbox formControlName="darkMode">Dark mode</mat-checkbox>
+    <mat-checkbox formControlName="toggle">toggle mode</mat-checkbox>
+</form>
+<p *ngIf="save$ | async as saved; else saving">{{saved}}</p>
+<ng-template #saving>
+    <p>saving...</p>
+</ng-template>

@@ -37,6 +37,11 @@ export interface Organization{
     size: number;
 }
 
+export interface IAutoSave{
+    darkMode: boolean,
+    toggle: boolean
+}
+
 export interface IWeatherAPI{
     getWeather (): Observable<Weather>;
     countByDirection (arr: Pick<Data, 'wind10m'>[] | undefined, val: string): number;
