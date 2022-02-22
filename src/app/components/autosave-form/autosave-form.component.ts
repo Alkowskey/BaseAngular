@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
-import { switchMap, debounceTime, Observable, distinctUntilChanged } from 'rxjs'
+import { debounceTime, Observable, map, shareReplay, tap } from 'rxjs'
 import { AutosaveServiceService } from './autosave-service.service'
-import { IAutoSave } from '../../../interfaces'
+
+enum SaveStatus {
+  Saving = 'Saving...',
+  Saved = 'Saved.',
+  Idle = '',
+}
 
 @Component({
   selector: 'app-autosave-form',
@@ -15,14 +20,22 @@ export class AutosaveFormComponent implements OnInit {
     toggle: new FormControl()
   })
 
-  save$: Observable<string> = new Observable<string>();
+  status: SaveStatus = SaveStatus.Idle;
+
+  save$: Observable<string> = this.formGroup.valueChanges.pipe(
+    tap(() => {
+      this.status = SaveStatus.Saving
+    }),
+    debounceTime(1000),
+    map((value) => (this.autosaveService.save(value))),
+    tap(() => {
+      this.status = SaveStatus.Saved
+    }),
+    shareReplay(1)
+  )
 
   constructor (private autosaveService: AutosaveServiceService) { }
 
   ngOnInit (): void {
-    this.save$ = this.formGroup.valueChanges.pipe(
-      debounceTime(1000),
-      switchMap((v: IAutoSave) => this.autosaveService.save(v))
-    )
   }
 }
