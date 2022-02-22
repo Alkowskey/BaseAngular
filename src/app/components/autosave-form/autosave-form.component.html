@@ -4,6 +4,6 @@
     <mat-checkbox formControlName="toggle">toggle mode</mat-checkbox>
 </form>
 <p *ngIf="save$ | async as data">{{data}}</p>
-<p>
+<p *ngIf="status$ | async as status">
     {{status}}
 </p>
