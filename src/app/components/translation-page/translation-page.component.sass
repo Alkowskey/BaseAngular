@@ -1,0 +1,40 @@
+.switch
+  position: relative
+
+.switchInput
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  opacity: 0
+  z-index: -1
+
+.switchIndicator
+  position: relative
+  width: 5vw
+  height: 3vh
+  background: black
+  box-shadow: 0 0 20px rgba(0,0,0,0.5)
+  border-radius: 40px
+  transition: all .4s
+  cursor: pointer
+
+  &:before
+    content: ''
+    position: absolute
+    top: 5px
+    left: 0.5vw
+    width: 1.5vw
+    height: 2vh
+    background: white
+    border-radius: 50%
+    transition: all .4s
+    box-shadow: 0 0 20px #ebebeb80
+
+  .switchInput:checked ~ &
+    background: #5b5f8d
+
+    &:before
+      left: 3vw
+      background: white
