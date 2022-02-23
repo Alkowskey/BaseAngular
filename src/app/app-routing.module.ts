@@ -7,6 +7,7 @@ import { MainComponent } from './components/web/main/main.component'
 import { OrganizationComponent } from './components/organization/organization.component'
 import { AutosaveFormComponent } from './components/autosave-form/autosave-form.component'
 import { EmployeeComponent } from './employee/employee.component'
+import { TranslationPageComponent } from './components/translation-page/translation-page.component'
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'emp', component: EmployeeComponent },
   { path: 'form', component: AutosaveFormComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'translation', component: TranslationPageComponent, pathMatch: 'full' },
   { path: 'web', component: MainComponent, pathMatch: 'full' },
   { path: '**', redirectTo: '/' }
 ]

@@ -1,0 +1,6 @@
+<input type="checkbox" id="lang" appChangeLang [isChecked]="isChecked" (change)="isChecked = !isChecked"/>
+<label for="lang">swap lang</label>
+<ng-container *transloco="let t">
+    <h1>{{t('main')}}</h1>
+    <h3>{{ t('hello') }}</h3>
+</ng-container>

@@ -1,0 +1,5 @@
+{
+    "hello": "transloco pl",
+    "dynamic": "transloco {{value}}",
+    "main": "główny"
+}

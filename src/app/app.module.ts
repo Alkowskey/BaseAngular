@@ -31,6 +31,9 @@ import { AutosaveFormComponent } from './components/autosave-form/autosave-form.
 import { NgxsModule } from '@ngxs/store'
 import { OrganizationState } from './organization.state';
 import { EmployeeComponent } from './employee/employee.component'
+import { TranslocoRootModule } from './transloco-root.module';
+import { TranslationPageComponent } from './components/translation-page/translation-page.component';
+import { ChangeLangDirective } from './directives/change-lang.directive'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -55,7 +58,9 @@ export const API_URL = new InjectionToken<string>('API_URL')
     ColorsComponent,
     OrganizationComponent,
     AutosaveFormComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    TranslationPageComponent,
+    ChangeLangDirective
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,8 @@ export const API_URL = new InjectionToken<string>('API_URL')
     BrowserAnimationsModule,
     MaterialModule,
     FontAwesomeModule,
-    NgxsModule.forRoot([OrganizationState], { selectorOptions: { injectContainerState: false }, developmentMode: true })
+    NgxsModule.forRoot([OrganizationState], { selectorOptions: { injectContainerState: false }, developmentMode: true }),
+    TranslocoRootModule
   ],
   providers: [
     FocusOnElementService,
