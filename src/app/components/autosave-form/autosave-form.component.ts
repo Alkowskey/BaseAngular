@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
-import { debounceTime, Observable, map, shareReplay, tap, Subject } from 'rxjs'
+import { debounceTime, Observable, map, shareReplay, tap, BehaviorSubject } from 'rxjs'
 import { AutosaveServiceService } from './autosave-service.service'
 
 enum SaveStatus {
@@ -20,7 +20,7 @@ export class AutosaveFormComponent implements OnInit {
     toggle: new FormControl()
   })
 
-  status$: Subject<SaveStatus> = new Subject<SaveStatus>();
+  status$: BehaviorSubject<SaveStatus> = new BehaviorSubject<SaveStatus>(SaveStatus.Idle); // Changed Subject to BehaviourSubject just to try it out
 
   save$: Observable<string> = this.formGroup.valueChanges.pipe(
     tap(() => {
