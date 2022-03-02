@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { AdminAPIComponent } from '../../components/admin-api/admin-api.component'
 import { Routes, RouterModule } from '@angular/router'
-import { ReactiveFormsModule } from '@angular/forms'
 import PermissionGuard from '../../_utils/PermissionGuard'
-import { TrackSelectDirective } from '../../directives/track-select.directive'
 import { SharedModule } from '../shared/shared.module'
+import { ReactiveFormsModule } from '@angular/forms'
 
 const routes: Routes = [
   { path: '', component: AdminAPIComponent, pathMatch: 'full' },
@@ -18,9 +17,9 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   providers: [
     PermissionGuard

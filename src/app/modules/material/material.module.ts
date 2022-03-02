@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSortModule } from '@angular/material/sort'
 import { MatIconModule } from '@angular/material/icon'
+import { MatCheckboxModule } from '@angular/material/checkbox'
 
 @NgModule({
   declarations: [],
@@ -16,7 +17,8 @@ import { MatIconModule } from '@angular/material/icon'
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule { }
