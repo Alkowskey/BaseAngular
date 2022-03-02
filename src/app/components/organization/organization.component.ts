@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, Inject } from '@angular/core'
 import { Observable } from 'rxjs'
-import { Organization } from 'src/interfaces'
 import { ORGANIZATION_PROVIDERS, ORGANIZATION_INFO } from './organization.providers'
+import { Organization } from '../../models/organization.model';
 
 @Component({
   selector: 'app-organization',

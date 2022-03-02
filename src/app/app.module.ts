@@ -29,6 +29,7 @@ import { ColorsComponent } from './components/colors/colors.component'
 import { OrganizationComponent } from './components/organization/organization.component'
 import { AutosaveFormComponent } from './components/autosave-form/autosave-form.component';
 import { StoreModule } from '@ngrx/store'
+import { reducers } from './reducers'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -63,7 +64,7 @@ export const API_URL = new InjectionToken<string>('API_URL')
     BrowserAnimationsModule,
     MaterialModule,
     FontAwesomeModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot(reducers)
   ],
   providers: [
     FocusOnElementService,

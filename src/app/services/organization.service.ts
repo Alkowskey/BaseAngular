@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { Organization } from 'src/interfaces'
 import { of, Observable } from 'rxjs'
+import { Organization } from '../models/organization.model';
 
 const ORGANIZATIONS: Organization[] = [
   { id: 0, name: 'Organization 1', size: 32 },
