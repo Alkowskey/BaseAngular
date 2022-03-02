@@ -27,7 +27,8 @@ import { UsersTabComponent } from './components/users-tab/users-tab.component'
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component'
 import { ColorsComponent } from './components/colors/colors.component'
 import { OrganizationComponent } from './components/organization/organization.component'
-import { AutosaveFormComponent } from './components/autosave-form/autosave-form.component'
+import { AutosaveFormComponent } from './components/autosave-form/autosave-form.component';
+import { StoreModule } from '@ngrx/store'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -61,7 +62,8 @@ export const API_URL = new InjectionToken<string>('API_URL')
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     FocusOnElementService,
