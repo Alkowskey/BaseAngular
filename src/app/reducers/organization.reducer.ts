@@ -7,20 +7,17 @@ export interface OrganizationState{
     organizations: Organization[];
 }
 
-const initialState: OrganizationState = {
-    organizations: [
-        { id: 0, name: 'Organization 1', size: 32 },
-        { id: 1, name: 'Organization 2', size: 16 },
-        { id: 2, name: 'Organization 3', size: 256 }
-    ]
-};
+const initialState: Organization[] = [
+    { id: 0, name: 'Organization 1', size: 32 },
+    { id: 1, name: 'Organization 2', size: 16 },
+    { id: 2, name: 'Organization 3', size: 256 }
+];
 
-export function organizationReducer(state: OrganizationState = initialState, action: OrganizationActions.Actions): OrganizationState {
+export function organizationReducer(state: Organization[] = initialState, action: OrganizationActions.Actions): Organization[] {
 
     switch(action.type) {
         case OrganizationActions.ADD_ORGANIZATION:
-            state.organizations.push(action.payload);
-            return state;
+            return [...state, action.payload];
         default:
             return state;
     }

@@ -1,18 +1,25 @@
-import { Injectable } from '@angular/core'
-import { of, Observable } from 'rxjs'
+import { Injectable, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { of, Observable, map } from 'rxjs';
 import { Organization } from '../models/organization.model';
+import { OrganizationState } from '../reducers/organization.reducer';
+import { AppState } from '../reducers/index';
+import { filter } from 'rxjs/operators';
+import { AddOrganization } from '../actions/organization.actions';
 
-const ORGANIZATIONS: Organization[] = [
-  { id: 0, name: 'Organization 1', size: 32 },
-  { id: 1, name: 'Organization 2', size: 16 },
-  { id: 2, name: 'Organization 3', size: 256 }]
+let ORGANIZATIONS: Observable<Organization[]>;
 @Injectable({
   providedIn: 'root'
 })
 export class OrganizationService {
-  constructor () { }
-
-  getOrganizationById$ (id: number): Observable<Organization> {
-    return of(ORGANIZATIONS[id])
+  constructor (private store: Store<AppState>) {
+    ORGANIZATIONS = this.store.select((store) => store.organizationList)
+   }
+  getOrganizationById$ (id: number): Observable<Organization | undefined> {
+    const organization = ORGANIZATIONS.pipe(
+      map(organizationList => organizationList.find(x=>id == x.id)) // WTF, didn't work with === instead of == lol
+    )
+    organization.subscribe(console.table)
+    return organization;
   }
 }

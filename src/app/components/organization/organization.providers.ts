@@ -20,7 +20,7 @@ export const ORGANIZATION_PROVIDERS: Provider[] = [
 export function orgFactory (
   { params }: ActivatedRoute,
   organizationService: OrganizationService
-): Observable<Organization> {
+): Observable<Organization | undefined> {
   return params.pipe(
     switchMap((params) => {
       const id: number = params['id']
