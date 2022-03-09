@@ -21,15 +21,18 @@ export class OrganizationComponent implements OnInit {
   @Select(OrganizationState.emps)
     emps: Observable<Employee[]> | undefined
 
+  @Select(OrganizationState.enabledOrganizations)
+    enabledOrganizations: Observable<Organization[]> | undefined
+
   constructor (
     @Inject(ORGANIZATION_INFO) readonly organization$: Observable<Organization>,
     private store: Store
   ) { }
 
   ngOnInit (): void {
-    this.organizations?.subscribe(console.table)
+    this.enabledOrganizations?.subscribe(console.table)
     this.emps?.subscribe(console.table)
-    this.store.dispatch(new AddOrganization({ id: 1, name: 'test', size: 32 }))
+    this.store.dispatch(new AddOrganization({ id: 1, name: 'test', size: 32, enabled: true }))
     console.log(this.store)
   }
 }

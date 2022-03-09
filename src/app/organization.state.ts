@@ -9,11 +9,10 @@ export class OrganizationsStateModel {
   emps: Employee[] = []
 }
 const ORGANIZATIONS: Organization[] = [
-  { id: 0, name: 'Organization 1', size: 32 },
-  { id: 1, name: 'Organization 2', size: 16 },
-  { id: 2, name: 'Organization 3', size: 256 }
+  { id: 0, name: 'Organization 1', size: 32, enabled: true },
+  { id: 1, name: 'Organization 2', size: 16, enabled: false },
+  { id: 2, name: 'Organization 3', size: 256, enabled: false }
 ]
-
 const EMPS: Employee[] = [
   { id: 0, name: 'Alek', surname: 'ASd', organizationId: 0 },
   { id: 0, name: 'Alek', surname: 'ASd', organizationId: 1 }
@@ -30,6 +29,11 @@ export class OrganizationState {
   @Selector()
   static organizations (state: OrganizationsStateModel) {
     return state.organizations
+  }
+
+  @Selector()
+  static enabledOrganizations (state: OrganizationsStateModel) {
+    return state.organizations.filter(x => x.enabled)
   }
 
   @Selector()
