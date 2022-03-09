@@ -1,8 +1,8 @@
 import { InjectionToken, Provider } from '@angular/core'
 import { Observable, switchMap } from 'rxjs'
-import { Organization } from '../../../interfaces'
 import { ActivatedRoute } from '@angular/router'
 import { OrganizationService } from '../../services/organization.service'
+import { Organization } from '../../models/organization.model'
 
 // Token that can be injected using @Inject decorator
 export const ORGANIZATION_INFO = new InjectionToken<Observable<Organization>>(

@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit, Inject } from '@angular/core'
-import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
-import { Organization } from 'src/interfaces'
 import { ORGANIZATION_PROVIDERS, ORGANIZATION_INFO } from './organization.providers'
-import { AddOrganization } from '../../organization.actions'
-import { OrganizationsState } from '../../organization.state'
+import { AddOrganization } from '../../actions/organization.action'
+import { Organization } from '../../models/organization.model'
+import { Select, Store } from '@ngxs/store'
+import { OrganizationState } from '../../organization.state'
+import { Employee } from '../../models/employee.model'
 
 @Component({
   selector: 'app-organization',
@@ -14,14 +15,21 @@ import { OrganizationsState } from '../../organization.state'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrganizationComponent implements OnInit {
+  @Select(OrganizationState.organizations)
+    organizations: Observable<Organization[]> | undefined
+
+  @Select(OrganizationState.emps)
+    emps: Observable<Employee[]> | undefined
+
   constructor (
     @Inject(ORGANIZATION_INFO) readonly organization$: Observable<Organization>,
-    private orgState: OrganizationsState,
     private store: Store
   ) { }
 
   ngOnInit (): void {
+    this.organizations?.subscribe(console.table)
+    this.emps?.subscribe(console.table)
+    this.store.dispatch(new AddOrganization({ id: 1, name: 'test', size: 32 }))
     console.log(this.store)
-    this.store.dispatch(new AddOrganization({}))
   }
 }
