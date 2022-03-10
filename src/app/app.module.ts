@@ -64,7 +64,7 @@ export const API_URL = new InjectionToken<string>('API_URL')
     BrowserAnimationsModule,
     MaterialModule,
     FontAwesomeModule,
-    NgxsModule.forRoot([OrganizationState])
+    NgxsModule.forRoot([OrganizationState], { selectorOptions: { injectContainerState: false } })
   ],
   providers: [
     FocusOnElementService,

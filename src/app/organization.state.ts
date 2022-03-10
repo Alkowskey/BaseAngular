@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { Injectable } from '@angular/core'
 import { Action, Selector, State, StateContext } from '@ngxs/store'
 import { AddOrganization } from './actions/organization.action'
@@ -14,8 +15,8 @@ const ORGANIZATIONS: Organization[] = [
   { id: 2, name: 'Organization 3', size: 256, enabled: false }
 ]
 const EMPS: Employee[] = [
-  { id: 0, name: 'Alek', surname: 'ASd', organizationId: 0 },
-  { id: 0, name: 'Alek', surname: 'ASd', organizationId: 1 }
+  { id: 0, name: 'Test1', surname: 'Test1', organizationId: 0 },
+  { id: 0, name: 'Test2', surname: 'Test2', organizationId: 1 }
 ]
 @State<OrganizationsStateModel>({
   name: 'organizations',
@@ -39,6 +40,12 @@ export class OrganizationState {
   @Selector()
   static emps (state: OrganizationsStateModel) {
     return state.emps
+  }
+
+  @Selector([OrganizationState.enabledOrganizations])
+  static getEnabledOrganizations (data: Organization[]) {
+    console.table(data)
+    return data.map(d => d.name + 'getEnabledOrg')
   }
 
   @Action(AddOrganization)

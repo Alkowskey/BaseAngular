@@ -21,7 +21,7 @@ export class OrganizationComponent implements OnInit {
   @Select(OrganizationState.emps)
     emps: Observable<Employee[]> | undefined
 
-  @Select(OrganizationState.enabledOrganizations)
+  @Select(OrganizationState.getEnabledOrganizations)
     enabledOrganizations: Observable<Organization[]> | undefined
 
   constructor (
@@ -32,7 +32,7 @@ export class OrganizationComponent implements OnInit {
   ngOnInit (): void {
     this.enabledOrganizations?.subscribe(console.table)
     this.emps?.subscribe(console.table)
-    this.store.dispatch(new AddOrganization({ id: 1, name: 'test', size: 32, enabled: true }))
+    this.store.dispatch(new AddOrganization({ id: 1, name: 'test', size: 32, enabled: false }))
     console.log(this.store)
   }
 }
