@@ -1,9 +1,11 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-use-before-define */
 import { Injectable } from '@angular/core'
 import { Action, Selector, State, StateContext } from '@ngxs/store'
-import { AddOrganization } from './actions/organization.action'
+import { AddOrganization, EnableOrganization } from './actions/organization.action'
 import { Employee } from './models/employee.model'
 import { Organization } from './models/organization.model'
+import { patch, updateItem } from '@ngxs/store/operators'
 
 export class OrganizationsStateModel {
   organizations: Organization[] = []
@@ -32,7 +34,7 @@ export class OrganizationState {
     return state.organizations
   }
 
-  @Selector()
+  @Selector([OrganizationState])
   static enabledOrganizations (state: OrganizationsStateModel) {
     return state.organizations.filter(x => x.enabled)
   }
@@ -44,8 +46,14 @@ export class OrganizationState {
 
   @Selector([OrganizationState.enabledOrganizations])
   static getEnabledOrganizations (data: Organization[]) {
-    console.table(data)
     return data.map(d => d.name + 'getEnabledOrg')
+  }
+
+  @Selector()
+  static getOrganizationById (state: OrganizationsStateModel) {
+    return (index: number) => { // <--- Return a function from select
+      return state.organizations.find(org => org.id == index)
+    }
   }
 
   @Action(AddOrganization)
@@ -55,5 +63,15 @@ export class OrganizationState {
     ctx.patchState({
       organizations: [...state.organizations, organization]
     })
+  }
+
+  @Action(EnableOrganization)
+  enableOrganization (ctx: StateContext<OrganizationsStateModel>, { enabled, organizationId }: EnableOrganization) {
+    ctx.setState(
+      patch({
+        organizations: updateItem<Organization>(x => x?.id === organizationId, patch({ enabled }))
+      })
+    )
+    console.log(enabled, organizationId)
   }
 }

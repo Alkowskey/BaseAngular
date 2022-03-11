@@ -9,6 +9,18 @@ export const ORGANIZATION_INFO = new InjectionToken<Observable<Organization>>(
   'Organization informations'
 )
 
+export function orgFactory (
+  { params }: ActivatedRoute,
+  organizationService: OrganizationService
+): Observable<Organization | undefined> {
+  return params.pipe(
+    switchMap((params) => {
+      const id: number = params['id']
+      return organizationService.getOrganizationById$(id)
+    })
+  )
+}
+
 export const ORGANIZATION_PROVIDERS: Provider[] = [
   {
     provide: ORGANIZATION_INFO,
@@ -16,16 +28,3 @@ export const ORGANIZATION_PROVIDERS: Provider[] = [
     useFactory: orgFactory
   }
 ]
-
-export function orgFactory (
-  { params }: ActivatedRoute,
-  organizationService: OrganizationService
-): Observable<Organization> {
-  return params.pipe(
-    switchMap((params) => {
-      const id: number = params['id']
-
-      return organizationService.getOrganizationById$(id)
-    })
-  )
-}
