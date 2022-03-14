@@ -5,7 +5,7 @@ import { Action, Selector, State, StateContext } from '@ngxs/store'
 import { AddOrganization, EnableOrganization } from './actions/organization.action'
 import { Employee } from './models/employee.model'
 import { Organization } from './models/organization.model'
-import { patch, updateItem } from '@ngxs/store/operators'
+import { append, patch, updateItem } from '@ngxs/store/operators'
 
 export class OrganizationsStateModel {
   organizations: Organization[] = []
@@ -58,11 +58,12 @@ export class OrganizationState {
 
   @Action(AddOrganization)
   addOrganization (ctx: StateContext<OrganizationsStateModel>, action: AddOrganization) {
-    const state = ctx.getState()
     const organization = action.payload
-    ctx.patchState({
-      organizations: [...state.organizations, organization]
-    })
+    ctx.setState(
+      patch({
+        organizations: append([organization])
+      })
+    )
   }
 
   @Action(EnableOrganization)
@@ -72,6 +73,5 @@ export class OrganizationState {
         organizations: updateItem<Organization>(x => x?.id === organizationId, patch({ enabled }))
       })
     )
-    console.log(enabled, organizationId)
   }
 }

@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit, Inject } from '@angular/cor
 import { Observable } from 'rxjs'
 import { ORGANIZATION_PROVIDERS, ORGANIZATION_INFO } from './organization.providers'
 import { Organization } from '../../models/organization.model'
-import { Select } from '@ngxs/store'
+import { Select, Store } from '@ngxs/store'
 import { OrganizationState } from '../../organization.state'
+import { AddOrganization } from '../../actions/organization.action'
 
 @Component({
   selector: 'app-organization',
@@ -17,10 +18,13 @@ export class OrganizationComponent implements OnInit {
     organizations!: Observable<Organization[]>
 
   constructor (
-    @Inject(ORGANIZATION_INFO) readonly organization$: Observable<Organization>
+    @Inject(ORGANIZATION_INFO) readonly organization$: Observable<Organization>,
+    private store: Store
   ) { }
 
   ngOnInit (): void {
     this.organizations.subscribe(console.table)
+
+    this.store.dispatch(new AddOrganization({ id: 10, enabled: true, name: 'Nowa org', size: 32 }))
   }
 }
