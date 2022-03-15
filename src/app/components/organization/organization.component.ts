@@ -5,6 +5,7 @@ import { Organization } from '../../models/organization.model'
 import { Select, Store } from '@ngxs/store'
 import { OrganizationState } from '../../organization.state'
 import { AddOrganization, UpdateOrganizationName } from '../../actions/organization.action'
+import { OrganizationEmp } from 'src/interfaces'
 
 @Component({
   selector: 'app-organization',
@@ -17,13 +18,16 @@ export class OrganizationComponent implements OnInit {
   @Select(OrganizationState.organizations)
     organizations!: Observable<Organization[]>
 
+  @Select(OrganizationState.getOrganizationWithEmps)
+    organizationsEmps!: Observable<OrganizationEmp[]>
+
   constructor (
     @Inject(ORGANIZATION_INFO) readonly organization$: Observable<Organization>,
     private store: Store
   ) { }
 
   ngOnInit (): void {
-    this.organizations.subscribe(console.table)
+    this.organizationsEmps.subscribe(console.table)
 
     this.store.dispatch(new AddOrganization({ id: 10, enabled: true, name: 'Nowa org', size: 32 }))
     this.store.dispatch(new UpdateOrganizationName(10, 'Updated Name'))

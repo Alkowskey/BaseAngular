@@ -6,6 +6,7 @@ import { AddOrganization, EnableOrganization, UpdateOrganizationName } from './a
 import { Employee } from './models/employee.model'
 import { Organization } from './models/organization.model'
 import { append, patch, updateItem } from '@ngxs/store/operators'
+import { OrganizationEmp } from '../interfaces'
 
 export class OrganizationsStateModel {
   organizations: Organization[] = []
@@ -54,6 +55,13 @@ export class OrganizationState {
     return (index: number) => { // <--- Return a function from select
       return state.organizations.find(org => org.id == index)
     }
+  }
+
+  @Selector()
+  static getOrganizationWithEmps (state: OrganizationsStateModel): OrganizationEmp[] {
+    return state.organizations.map(o => {
+      return { ...o, emps: state.emps.filter(emp => emp.organizationId === o.id) }
+    })
   }
 
   @Action(AddOrganization)
