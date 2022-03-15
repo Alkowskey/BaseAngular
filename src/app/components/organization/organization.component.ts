@@ -4,7 +4,7 @@ import { ORGANIZATION_PROVIDERS, ORGANIZATION_INFO } from './organization.provid
 import { Organization } from '../../models/organization.model'
 import { Select, Store } from '@ngxs/store'
 import { OrganizationState } from '../../organization.state'
-import { AddOrganization } from '../../actions/organization.action'
+import { AddOrganization, UpdateOrganizationName } from '../../actions/organization.action'
 
 @Component({
   selector: 'app-organization',
@@ -26,5 +26,6 @@ export class OrganizationComponent implements OnInit {
     this.organizations.subscribe(console.table)
 
     this.store.dispatch(new AddOrganization({ id: 10, enabled: true, name: 'Nowa org', size: 32 }))
+    this.store.dispatch(new UpdateOrganizationName(10, 'Updated Name'))
   }
 }

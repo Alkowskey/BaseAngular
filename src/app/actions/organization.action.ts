@@ -11,6 +11,11 @@ export class EnableOrganization {
   constructor (public organizationId: number, public enabled: boolean) {}
 }
 
+export class UpdateOrganizationName {
+  static readonly type = '[Organization] Update name'
+  constructor (public organizationId: number, public name: string) {}
+}
+
 export class AddEmployee {
   static readonly type = '[Employee] Add'
   constructor (public payload: Employee) {}
