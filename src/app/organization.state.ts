@@ -2,7 +2,7 @@
 /* eslint-disable no-use-before-define */
 import { Injectable } from '@angular/core'
 import { Action, Selector, State, StateContext } from '@ngxs/store'
-import { AddOrganization, EnableOrganization, UpdateOrganizationName } from './actions/organization.action'
+import { AddOrganization, EnableOrganization, UpdateOrganizationName, AddEmployee } from './actions/organization.action'
 import { Employee } from './models/employee.model'
 import { Organization } from './models/organization.model'
 import { append, patch, updateItem } from '@ngxs/store/operators'
@@ -70,6 +70,16 @@ export class OrganizationState {
     ctx.setState(
       patch({
         organizations: append([organization])
+      })
+    )
+  }
+
+  @Action(AddEmployee)
+  addEmployee (ctx: StateContext<OrganizationsStateModel>, action: AddEmployee) {
+    const emp = action.payload
+    ctx.setState(
+      patch({
+        emps: append([emp])
       })
     )
   }

@@ -29,7 +29,8 @@ import { ColorsComponent } from './components/colors/colors.component'
 import { OrganizationComponent } from './components/organization/organization.component'
 import { AutosaveFormComponent } from './components/autosave-form/autosave-form.component'
 import { NgxsModule } from '@ngxs/store'
-import { OrganizationState } from './organization.state'
+import { OrganizationState } from './organization.state';
+import { EmployeeComponent } from './employee/employee.component'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -53,7 +54,8 @@ export const API_URL = new InjectionToken<string>('API_URL')
     ProgressBarComponent,
     ColorsComponent,
     OrganizationComponent,
-    AutosaveFormComponent
+    AutosaveFormComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

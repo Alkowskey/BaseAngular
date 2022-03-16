@@ -1,0 +1,38 @@
+<p>employee works!</p>
+<form [formGroup]="empForm">
+
+
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Id</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="id">
+            <mat-icon matSuffix>home</mat-icon>
+            <mat-hint>Enter id for new employee</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="name">
+            <mat-icon matSuffix>home</mat-icon>
+            <mat-hint>Enter name of the new employee</mat-hint>
+        </mat-form-field>
+    </div>
+    <div class="row">
+    <mat-form-field appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="surname">
+        <mat-icon matSuffix>home</mat-icon>
+        <mat-hint>Enter surname of the new employee</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>organization id</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="organizationId">
+        <mat-icon matSuffix>home</mat-icon>
+        <mat-hint>Enter orgainzation id that emp will join</mat-hint>
+    </mat-form-field>
+    </div>
+    <div class="test">
+        <button (click)="newEmp()" mat-stroked-button color="primary">Add Emp</button>
+    </div>
+  </form>
