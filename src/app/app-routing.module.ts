@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/admin-api/admin-api.module').then(m => m.AdminAPIModule)
   },
   { path: 'organization/:id', component: OrganizationComponent },
-  { path: 'emp/:id', component: EmployeeComponent },
+  { path: 'emp', component: EmployeeComponent },
   { path: 'form', component: AutosaveFormComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'web', component: MainComponent, pathMatch: 'full' },

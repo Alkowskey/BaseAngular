@@ -57,10 +57,10 @@ export class OrganizationState {
     }
   }
 
-  @Selector()
-  static getOrganizationWithEmps (state: OrganizationsStateModel): OrganizationEmp[] {
-    return state.organizations.map(o => {
-      return { ...o, emps: state.emps.filter(emp => emp.organizationId === o.id) }
+  @Selector([OrganizationState.organizations, OrganizationState.emps])
+  static getOrganizationWithEmps (organizations: Organization[], emps: Employee[]): OrganizationEmp[] {
+    return organizations.map(o => {
+      return { ...o, emps: emps.filter(emp => emp.organizationId === o.id) }
     })
   }
 
