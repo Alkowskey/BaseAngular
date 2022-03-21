@@ -1,12 +1,22 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-use-before-define */
 import { Injectable } from '@angular/core'
-import { Action, Selector, State, StateContext } from '@ngxs/store'
-import { AddOrganization, EnableOrganization, UpdateOrganizationName, AddEmployee } from './actions/organization.action'
+import { Action, Selector, State, StateContext, StateOperator } from '@ngxs/store'
+import { AddOrganization, EnableOrganization, UpdateOrganizationName, AddEmployee, AddEmployeeWithNewOrganization } from './actions/organization.action'
 import { Employee } from './models/employee.model'
 import { Organization } from './models/organization.model'
 import { append, patch, updateItem } from '@ngxs/store/operators'
 import { OrganizationEmp } from '../interfaces'
+
+function addEmployeeNewOrganization (emp: Employee, org: Organization): StateOperator<OrganizationsStateModel> {
+  return (state: Readonly<OrganizationsStateModel>) => {
+    return {
+      ...state,
+      organizations: [...state.organizations, org],
+      emps: [...state.emps, emp]
+    }
+  }
+}
 
 export class OrganizationsStateModel {
   organizations: Organization[] = []
@@ -72,6 +82,11 @@ export class OrganizationState {
         organizations: append([organization])
       })
     )
+  }
+
+  @Action(AddEmployeeWithNewOrganization)
+  addEmployeeWithNewOrganization (ctx: StateContext<OrganizationsStateModel>, { emp, organization }: AddEmployeeWithNewOrganization) {
+    ctx.setState(addEmployeeNewOrganization(emp, organization))
   }
 
   @Action(AddEmployee)

@@ -4,7 +4,7 @@ import { ORGANIZATION_PROVIDERS, ORGANIZATION_INFO } from './organization.provid
 import { Organization } from '../../models/organization.model'
 import { Select, Store } from '@ngxs/store'
 import { OrganizationState } from '../../organization.state'
-import { AddOrganization, UpdateOrganizationName } from '../../actions/organization.action'
+import { AddOrganization, UpdateOrganizationName, AddEmployeeWithNewOrganization } from '../../actions/organization.action'
 import { OrganizationEmp } from 'src/interfaces'
 
 @Component({
@@ -31,5 +31,7 @@ export class OrganizationComponent implements OnInit {
 
     this.store.dispatch(new AddOrganization({ id: 10, enabled: true, name: 'Nowa org', size: 32 }))
     this.store.dispatch(new UpdateOrganizationName(10, 'Updated Name'))
+
+    this.store.dispatch(new AddEmployeeWithNewOrganization({ id: 1231, name: 'temp', organizationId: 20, surname: 'temp surname' }, { id: 20, enabled: true, name: 'temp', size: 312 }))
   }
 }

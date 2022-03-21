@@ -21,16 +21,16 @@ export class DropdownListComponent implements ControlValueAccessor, OnInit {
   }
 
   @Input()
-  options: string[] = []
+    options: string[] = []
 
   @Input()
-  hiddenOptions: string[] = [];
+    hiddenOptions: string[] = []
 
-  _multiple: boolean = true;
-  value: stringTypes = [];
+  _multiple: boolean = true
+  value: stringTypes = []
 
   @Input()
-  event = new Subject<number>();
+    event = new Subject<number>()
 
   @Input()
   get multiSelect (): boolean {
@@ -48,7 +48,7 @@ export class DropdownListComponent implements ControlValueAccessor, OnInit {
   }
 
   @Input()
-  title: string = 'Options';
+    title: string = 'Options'
 
   onChange: any = () => {}
   onTouch: any = () => {}
