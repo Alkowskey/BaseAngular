@@ -3,3 +3,13 @@
 <p *ngIf="organization$ | async as organization">
    {{organization.name}} / {{organization.size}}
 </p>
+<h2>All organizations with emps:</h2>
+
+<ul *ngIf="organizationsEmps | async as organizations">
+   <li *ngFor="let organization of organizations">
+      {{organization.name}} / {{organization.size}}
+      <ul *ngIf="organization.emps">
+         <li *ngFor="let emp of organization.emps">{{emp.name}} {{emp.surname}} {{emp.organizationId}} {{emp.id}}</li>
+       </ul>
+   </li>
+</ul>

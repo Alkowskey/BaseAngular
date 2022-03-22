@@ -1,4 +1,6 @@
 import { Observable } from 'rxjs'
+import { Organization } from './app/models/organization.model'
+import { Employee } from './app/models/employee.model'
 export interface PersonInput {
     id: number;
     firstName: string;
@@ -31,12 +33,6 @@ export interface Weather {
     dataseries: Data[] | undefined;
 }
 
-export interface Organization{
-    id: number;
-    name: string;
-    size: number;
-}
-
 export interface IAutoSave{
     darkMode: boolean,
     toggle: boolean
@@ -46,4 +42,8 @@ export interface IWeatherAPI{
     getWeather (): Observable<Weather>;
     countByDirection (arr: Pick<Data, 'wind10m'>[] | undefined, val: string): number;
     groupWind (): Observable<Map<string, number>>;
+}
+
+export interface OrganizationEmp extends Organization {
+    emps: Employee[]
 }
