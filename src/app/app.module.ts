@@ -29,10 +29,10 @@ import { ColorsComponent } from './components/colors/colors.component'
 import { OrganizationComponent } from './components/organization/organization.component'
 import { AutosaveFormComponent } from './components/autosave-form/autosave-form.component'
 import { NgxsModule } from '@ngxs/store'
-import { OrganizationState } from './organization.state';
+import { OrganizationState } from './organization.state'
 import { EmployeeComponent } from './employee/employee.component'
-import { TranslocoRootModule } from './transloco-root.module';
-import { TranslationPageComponent } from './components/translation-page/translation-page.component';
+import { TranslocoRootModule } from './transloco-root.module'
+import { TranslationPageComponent } from './components/translation-page/translation-page.component'
 import { ChangeLangDirective } from './directives/change-lang.directive'
 
 export const API_URL = new InjectionToken<string>('API_URL')
