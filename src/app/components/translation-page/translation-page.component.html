@@ -1,0 +1,10 @@
+<label class="switch">
+    <input class="switchInput" id="lang" appChangeLang [isChecked]="isChecked" (change)="isChecked = !isChecked" type="checkbox">
+    <label for="lang">swap lang</label>
+    <div class="switchIndicator"></div>
+</label>
+
+<ng-container *transloco="let t">
+    <h1>{{t('main')}}</h1>
+    <h3>{{ t('hello') }}</h3>
+</ng-container>
