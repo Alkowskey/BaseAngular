@@ -30,8 +30,7 @@ export class EmployeeComponent implements OnInit {
 
   newEmp (): void {
     if (!this.empForm.valid) throw new Error('Form is not valid')
-    console.log(this.empForm.getRawValue())
-    const payload = this.empForm.getRawValue() as Employee
+    const payload = this.empForm.value as Employee
     this.store.dispatch(new AddEmployee(payload))
   }
 }
