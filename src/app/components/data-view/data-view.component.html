@@ -1,4 +1,7 @@
 <div class="block-wrapper">
+    <div class="cardHeader">
+        <ng-content select="[header]"></ng-content>
+    </div>
     <div class="wrapper">
         <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon">{{icon}}</mat-icon>
         <span class="caption">{{caption}}</span>
