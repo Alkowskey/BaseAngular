@@ -40,11 +40,11 @@
 
             </mat-table>
         </div>
-        <button (click)="loadData()">Reload data</button>
-        <button (click)="show()">
+        <button class="btn-primary" (click)="loadData()">Reload data</button>
+        <button class="btn-primary" (click)="show()">
             Show toast
         </button>
-        <button (click)="modal$$.next('asdasd')">
+        <button class="btn-primary" (click)="modal$$.next('asdasd')">
             Open modal
         </button>
         <app-dropdown-list [(ngModel)]="buttonValue" name="val" [title]='"Opts"' [options]="options" [multiSelect]=true [hiddenOptions] = "hiddenOptions" [event] = "subject"></app-dropdown-list>

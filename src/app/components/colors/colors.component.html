@@ -6,8 +6,8 @@
           autocomplete="off"
           [(ngModel)]="name"
         />
-        <button>Add color</button>
-        <button type="button" (click)="refresh$.next(null)">Refresh</button>
+        <button class="btn-primary" >Add color</button>
+        <button class="btn-primary" type="button" (click)="refresh$.next(null)">Refresh</button>
       </form>
     <p *ngFor="let color of colors">
       <button type="button" (click)="remove$.next(color)">
