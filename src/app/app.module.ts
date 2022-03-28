@@ -34,6 +34,8 @@ import { EmployeeComponent } from './employee/employee.component'
 import { TranslocoRootModule } from './transloco-root.module'
 import { TranslationPageComponent } from './components/translation-page/translation-page.component'
 import { ChangeLangDirective } from './directives/change-lang.directive'
+import { DataViewComponent } from './components/data-view/data-view.component';
+import { ProfileComponent } from './components/profile/profile.component'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -60,7 +62,9 @@ export const API_URL = new InjectionToken<string>('API_URL')
     AutosaveFormComponent,
     EmployeeComponent,
     TranslationPageComponent,
-    ChangeLangDirective
+    ChangeLangDirective,
+    DataViewComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
