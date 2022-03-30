@@ -34,8 +34,10 @@ import { EmployeeComponent } from './employee/employee.component'
 import { TranslocoRootModule } from './transloco-root.module'
 import { TranslationPageComponent } from './components/translation-page/translation-page.component'
 import { ChangeLangDirective } from './directives/change-lang.directive'
-import { DataViewComponent } from './components/data-view/data-view.component';
+import { DataViewComponent } from './components/data-view/data-view.component'
 import { ProfileComponent } from './components/profile/profile.component'
+import { TrimmerFormComponent } from './components/trimmer-form/trimmer-form.component'
+import { TrimOnLostFocusDirective } from './directives/trim-on-lost-focus.directive'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -64,7 +66,9 @@ export const API_URL = new InjectionToken<string>('API_URL')
     TranslationPageComponent,
     ChangeLangDirective,
     DataViewComponent,
-    ProfileComponent
+    ProfileComponent,
+    TrimmerFormComponent,
+    TrimOnLostFocusDirective
   ],
   imports: [
     BrowserModule,
