@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
-import { FormGroup, FormControl } from '@angular/forms'
+import { Validators } from '@angular/forms'
 import { SaveService } from '../../services/save.service'
 import { debounceTime, map, Observable } from 'rxjs'
+import { CustomFormControl } from '../../_utils/CustomFormControl'
+import { CustomFormGroup } from '../../_utils/CustomFormGroup'
 
 @Component({
   selector: 'app-trimmer-form',
@@ -10,8 +12,9 @@ import { debounceTime, map, Observable } from 'rxjs'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrimmerFormComponent implements OnInit {
-  form = new FormGroup({
-    input: new FormControl()
+  form = new CustomFormGroup({
+    input: new CustomFormControl('', [Validators.required, Validators.minLength(3)]),
+    test: new CustomFormControl('', [Validators.required, Validators.minLength(3)])
   })
 
   $save: Observable<string> = this.form.valueChanges.pipe(debounceTime(400), map(form => this.saveService.trim(form.input)))
@@ -20,5 +23,6 @@ export class TrimmerFormComponent implements OnInit {
 
   ngOnInit (): void {
     this.$save.subscribe(this.saveService.saveToApi)
+    this.form.setCallbackForAll((debounceTime(1000), map(v => v + 'test')), console.log)
   }
 }
