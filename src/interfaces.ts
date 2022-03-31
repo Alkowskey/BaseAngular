@@ -47,3 +47,7 @@ export interface IWeatherAPI{
 export interface OrganizationEmp extends Organization {
     emps: Employee[]
 }
+
+export interface CustomElementAccessor {
+    customMethod(): void;
+}
