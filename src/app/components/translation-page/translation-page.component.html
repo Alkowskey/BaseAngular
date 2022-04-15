@@ -8,3 +8,11 @@
     <h1>{{t('main')}}</h1>
     <h3>{{ t('hello') }}</h3>
 </ng-container>
+
+<p>
+    <button mat-raised-button type="button" color="primary" (click)="openTemplateModal()">Template Modal with Component in ng-template</button>
+</p>
+
+<ng-template cdkPortal #modalTemplate="cdkPortal">
+    <app-custom-modal (close)="closeTemplateModal($event)"></app-custom-modal>
+</ng-template>

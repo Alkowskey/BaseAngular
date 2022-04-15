@@ -9,6 +9,7 @@ import { AutosaveFormComponent } from './components/autosave-form/autosave-form.
 import { EmployeeComponent } from './employee/employee.component'
 import { TranslationPageComponent } from './components/translation-page/translation-page.component'
 import { ProfileComponent } from './components/profile/profile.component'
+import { TrimmerFormComponent } from './components/trimmer-form/trimmer-form.component'
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'organization/:id', component: OrganizationComponent },
   { path: 'emp', component: EmployeeComponent },
   { path: 'form', component: AutosaveFormComponent },
+  { path: 'trimmer', component: TrimmerFormComponent },
   { path: 'profile', component: ProfileComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'translation', component: TranslationPageComponent, pathMatch: 'full' },

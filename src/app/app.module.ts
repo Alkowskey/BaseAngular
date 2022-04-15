@@ -34,8 +34,12 @@ import { EmployeeComponent } from './employee/employee.component'
 import { TranslocoRootModule } from './transloco-root.module'
 import { TranslationPageComponent } from './components/translation-page/translation-page.component'
 import { ChangeLangDirective } from './directives/change-lang.directive'
-import { DataViewComponent } from './components/data-view/data-view.component';
+import { DataViewComponent } from './components/data-view/data-view.component'
 import { ProfileComponent } from './components/profile/profile.component'
+import { TrimmerFormComponent } from './components/trimmer-form/trimmer-form.component'
+import { TrimOnLostFocusDirective } from './directives/trim-on-lost-focus.directive'
+import { CustomModalComponent } from './components/custom-modal/custom-modal.component'
+import { PortalModule } from '@angular/cdk/portal'
 
 export const API_URL = new InjectionToken<string>('API_URL')
 
@@ -64,7 +68,10 @@ export const API_URL = new InjectionToken<string>('API_URL')
     TranslationPageComponent,
     ChangeLangDirective,
     DataViewComponent,
-    ProfileComponent
+    ProfileComponent,
+    TrimmerFormComponent,
+    TrimOnLostFocusDirective,
+    CustomModalComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,8 @@ export const API_URL = new InjectionToken<string>('API_URL')
     MaterialModule,
     FontAwesomeModule,
     NgxsModule.forRoot([OrganizationState], { selectorOptions: { injectContainerState: false }, developmentMode: true }),
-    TranslocoRootModule
+    TranslocoRootModule,
+    PortalModule
   ],
   providers: [
     FocusOnElementService,
